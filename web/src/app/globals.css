@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties — Fluid Type Scale ──────────────────────────────── */
+:root {
+  --step--1: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --step-0:  clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+  --step-1:  clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+  --step-2:  clamp(1.35rem, 1.1rem + 1.25vw, 1.875rem);
+  --step-3:  clamp(1.75rem, 1.2rem + 2.75vw, 3rem);
+  --step-4:  clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+  --step-5:  clamp(3.5rem, 1rem + 12.5vw, 9rem);
+
+  /* Brand easing */
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Base Reset ──────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream-50 text-walnut-900 font-body;
+    font-size: var(--step-0);
+    /* Grain texture overlay */
+    position: relative;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-walnut-900;
+    font-weight: 700;
+    line-height: 0.9;
+  }
+
+  p {
+    @apply font-body text-walnut-900/80;
+    line-height: 1.65;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    @apply bg-honey-400 text-cream-50;
+  }
+}
+
+/* ─── Focus Styles ───────────────────────────────────────────────────────── */
+@layer base {
+  :focus-visible {
+    outline: 2px solid theme('colors.honey.500');
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.cream.100');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.wax.400');
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.honey.500');
+}
+
+/* ─── Utilities ───────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-step--1 { font-size: var(--step--1); }
+  .text-step-0  { font-size: var(--step-0); }
+  .text-step-1  { font-size: var(--step-1); }
+  .text-step-2  { font-size: var(--step-2); }
+  .text-step-3  { font-size: var(--step-3); }
+  .text-step-4  { font-size: var(--step-4); }
+  .text-step-5  { font-size: var(--step-5); }
+
+  /* Underline draw animation */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: theme('colors.honey.400');
+    transition: width 0.4s var(--ease-expo);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    width: 100%;
+  }
+}
