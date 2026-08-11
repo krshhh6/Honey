@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HORIZONTAL IMAGE SLIDER STYLES (PURE SQUARE SHARP IMAGES)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.sliderSection {
+  position: relative;
+  width: 100%;
+  padding: 100px 0 120px 0;
+  overflow: hidden;
+  background-color: #fdf0ee;
+}
+
+.textContainer {
+  max-width: 1360px;
+  margin: 0 auto 48px auto;
+  padding: 0 48px;
+}
+
+.heading {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(32px, 3.6vw, 56px);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+}
+
+.subtext {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(16px, 1.2vw, 19px);
+  font-weight: 400;
+  color: #555555;
+  margin: 0;
+}
+
+/* Full-Width Outer Carousel Container */
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sliderViewport {
+  width: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.sliderViewport:active {
+  cursor: grabbing;
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 16px; /* Clean subtle gap between sharp square photos */
+  padding: 0 48px;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.slideItem {
+  flex: 0 0 calc(33.333% - 11px);
+  min-width: 300px;
+  height: clamp(320px, 35vw, 420px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pure Square Sharp Edge Image */
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0 !important; /* Pure square radius sharp */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.slideItem:hover .slideImage {
+  transform: scale(1.03);
+}
+
+/* Floating Navigation Arrows */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navButton:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+
+.navButtonPrev {
+  left: 28px;
+}
+
+.navButtonNext {
+  right: 28px;
+}
+
+.navButtonDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 992px) {
+  .slideItem {
+    flex: 0 0 calc(50% - 8px);
+  }
+  .textContainer,
+  .sliderTrack {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .navButtonPrev {
+    left: 14px;
+  }
+  .navButtonNext {
+    right: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .slideItem {
+    flex: 0 0 calc(85% - 8px);
+  }
+}

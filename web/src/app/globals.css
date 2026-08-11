@@ -140,6 +140,19 @@ img { display: block; max-width: 100%; }
   filter: drop-shadow(0 24px 48px rgba(160, 80, 0, 0.16));
 }
 
+/* ── Side PNG illustration — pinned to far right edge ────────────────────── */
+.hero__side {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: clamp(260px, 28vw, 480px);
+  pointer-events: none;
+  opacity: 0.85;
+}
+.hero__side img { width: 100%; height: auto; display: block; }
+
 /* ── Flower — pinned to right edge ─────────────────────────────────────── */
 .hero__flower {
   position: absolute;

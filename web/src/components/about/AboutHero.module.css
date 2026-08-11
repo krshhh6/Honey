@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ABOUT HERO COMPONENT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: #f3b233; /* Solid warm honey/gold background block */
+  color: #1a1a1a;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Content Column */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.headline {
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: clamp(44px, 5.8vw, 84px);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+.headlineLine {
+  display: block;
+}
+
+.subtext {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 400;
+  color: #262626;
+  margin: 0 0 36px 0;
+  line-height: 1.4;
+}
+
+/* Pill-shaped Outlined CTA Button */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 9999px;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaButton:hover {
+  background-color: #1a1a1a;
+  color: #f3b233;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Right Image Column */
+.imageCol {
+  position: relative;
+  width: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.25 / 1;
+  border-radius: 0; /* Pure square radius sharp */
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 0 28px;
+  }
+  .heroSection {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+  .imageCol {
+    order: -1;
+  }
+}

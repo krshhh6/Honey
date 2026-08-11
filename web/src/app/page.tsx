@@ -1,8 +1,10 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
+import Navbar from '@/components/Navbar';
+import SplashLoader from '@/components/SplashLoader';
 import JarBees from '@/components/JarBees';
 import HoneyStorySection from '@/components/HoneyStorySection';
 import ShopByCollection from '@/components/ShopByCollection';
@@ -27,18 +29,12 @@ const fadeUp = {
     transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: d },
   }),
 };
-const fadeIn = {
-  hidden:  { opacity: 0 },
-  visible: (d = 0) => ({
-    opacity: 1,
-    transition: { duration: 0.5, ease: 'easeOut', delay: d },
-  }),
-};
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Page
    ═══════════════════════════════════════════════════════════════════════════ */
 export default function HomePage() {
+  const [showSplash, setShowSplash] = useState(true);
   const jarRef  = useRef<HTMLDivElement>(null);
 
   /* Jar — gentle perpetual float */
@@ -53,18 +49,18 @@ export default function HomePage() {
   return (
     <div className="page">
 
-      {/* ── ABOUT pill ──────────────────────────────────────────────────── */}
-      <motion.nav className="nav"
-        initial="hidden" animate="visible" variants={fadeIn} custom={0.2}>
-        <motion.div className="nav__pill"
-          whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
-          ABOUT
-        </motion.div>
-      </motion.nav>
+      {/* ── ANIMATED SPLASH PRELOADER PAGE ───────────────────────────────── */}
+      <AnimatePresence>
+        {showSplash && (
+          <SplashLoader onComplete={() => setShowSplash(false)} />
+        )}
+      </AnimatePresence>
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <div className="hero">
+      {/* ── TOP NAVBAR ─────────────────────────────────────────────────── */}
+      <Navbar />
+
+      {/* ── HERO SECTION ───────────────────────────────────────────────── */}
+      <div id="home" className="hero">
 
         {/* LEFT — text */}
         <div className="hero__text">
@@ -115,16 +111,22 @@ export default function HomePage() {
       </motion.div>
 
       {/* ── HARVEST STORY SECTION ────────────────────────────────────────── */}
-      <HoneyStorySection />
+      <div id="story">
+        <HoneyStorySection />
+      </div>
 
       {/* ── SHOP BY COLLECTION SECTION ───────────────────────────────────── */}
-      <ShopByCollection />
+      <div id="collections">
+        <ShopByCollection />
+      </div>
 
       {/* ── VIDEO BANNER SECTION ────────────────────────────────────────── */}
       <VideoBannerSection />
 
       {/* ── OUR GALLERY SECTION ─────────────────────────────────────────── */}
-      <GallerySection />
+      <div id="gallery">
+        <GallerySection />
+      </div>
 
     </div>
   );

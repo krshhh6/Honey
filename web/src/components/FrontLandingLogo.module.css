@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   FRONT LANDING LOGO STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  user-select: none;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Yellow Bee Vector Graphic - Perfectly matched to wrapper box */
+.beeImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 10px 24px rgba(249, 178, 51, 0.3));
+}
+
+/* SVG Text Overlay for Curved MEADLIGHT & Cursive Subtitle */
+.textOverlaySvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Arched "MEADLIGHT" Title */
+.archedTitle {
+  font-family: 'Jaro', 'Arial Black', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: 72px;
+  font-weight: 800;
+  fill: #1a1a1a;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Cursive "Fermented Honey Drink" Subtitle */
+.scriptSubtitle {
+  font-family: 'Irish Grover', 'Dancing Script', cursive;
+  font-size: 46px;
+  font-weight: 400;
+  fill: #1a1a1a;
+  letter-spacing: 0.02em;
+}
+
+/* Bottom Tagline */
+.tagline {
+  margin-top: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #767676;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+@media (max-width: 640px) {
+  .archedTitle {
+    font-size: 56px;
+  }
+  .scriptSubtitle {
+    font-size: 36px;
+  }
+  .tagline {
+    font-size: 13px;
+  }
+}
