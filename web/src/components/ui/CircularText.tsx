@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { motion, useAnimation, useMotionValue } from 'framer-motion';
 import styles from './CircularText.module.css';
 
@@ -10,6 +10,27 @@ export interface CircularTextProps {
   onHover?: 'slowDown' | 'speedUp' | 'pause' | 'goBonkers';
   className?: string;
 }
+
+type TransitionConfig = {
+  rotate: {
+    from: number;
+    to: number;
+    ease: string;
+    duration: number;
+    type: string;
+    repeat: number;
+  };
+  scale: {
+    type: string;
+    damping: number;
+    stiffness: number;
+  };
+};
+
+type PauseTransitionConfig = {
+  rotate: { type: string; damping: number; stiffness: number };
+  scale: { type: string; damping: number; stiffness: number };
+};
 
 export default function CircularText({
   text,
@@ -21,23 +42,23 @@ export default function CircularText({
   const controls = useAnimation();
   const rotation = useMotionValue(0);
 
-  const getRotationTransition = (duration: number, from: number, loop = true) => ({
+  const getRotationTransition = useCallback((duration: number, from: number, loop = true) => ({
     from,
     to: from + 360,
     ease: 'linear' as const,
     duration,
     type: 'tween' as const,
     repeat: loop ? Infinity : 0,
-  });
+  }), []);
 
-  const getTransition = (duration: number, from: number) => ({
+  const getTransition = useCallback((duration: number, from: number): TransitionConfig => ({
     rotate: getRotationTransition(duration, from),
     scale: {
       type: 'spring' as const,
       damping: 20,
       stiffness: 300,
     },
-  });
+  }), [getRotationTransition]);
 
   useEffect(() => {
     const start = rotation.get();
@@ -46,13 +67,13 @@ export default function CircularText({
       scale: 1,
       transition: getTransition(spinDuration, start),
     });
-  }, [spinDuration, text, onHover, controls, rotation]);
+  }, [spinDuration, text, onHover, controls, rotation, getTransition]);
 
   const handleHoverStart = () => {
     const start = rotation.get();
     if (!onHover) return;
 
-    let transitionConfig: any;
+    let transitionConfig: TransitionConfig | PauseTransitionConfig;
     let scaleVal = 1;
 
     switch (onHover) {
