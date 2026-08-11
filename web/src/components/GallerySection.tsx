@@ -149,22 +149,8 @@ export default function GallerySection() {
           </div>
         </header>
 
-        {/* 3D Coverflow View */}
-        {viewMode === 'coverflow' ? (
-          <div className="my-8 rounded-3xl bg-stone-900/95 p-6 md:p-10 shadow-2xl backdrop-blur border border-amber-900/30">
-            <CoverflowCarousel
-              slides={GALLERY_SLIDES}
-              showNavigation={true}
-              showPagination={true}
-              showCaption={true}
-              cardWidth="clamp(220px, 28vw, 340px)"
-              rotate={42}
-              depth={0.65}
-              fade={0.12}
-            />
-          </div>
-        ) : (
-          /* Classic Grid View */
+        {/* Classic Grid View */}
+        {viewMode === 'grid' && (
           <div className={styles.galleryGrid}>
             {GALLERY_SLIDES.map((item, idx) => (
               <div
@@ -178,6 +164,23 @@ export default function GallerySection() {
           </div>
         )}
       </div>
+
+      {/* 3D Coverflow View (Full-Bleed Left-Most to Right-Most Edge) */}
+      {viewMode === 'coverflow' && (
+        <div className="relative w-full max-w-full overflow-hidden py-4 z-10">
+          <CoverflowCarousel
+            slides={GALLERY_SLIDES}
+            showNavigation={true}
+            showPagination={true}
+            showCaption={true}
+            cardWidth="clamp(240px, 30vw, 400px)"
+            rotate={44}
+            depth={0.6}
+            fade={0.08}
+            gap={0.05}
+          />
+        </div>
+      )}
 
       {/* Lightbox Modal for Grid View */}
       {selectedPhoto && (

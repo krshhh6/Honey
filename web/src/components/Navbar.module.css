@@ -9,18 +9,40 @@
   right: 0;
   z-index: 1000;
   width: 100%;
-  padding: 20px 48px;
-  background-color: rgba(253, 240, 238, 0.82);
+  padding: 18px 48px;
+  background-color: rgba(253, 240, 238, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .headerScrolled {
-  padding: 14px 48px;
-  background-color: rgba(253, 240, 238, 0.94);
+  padding: 12px 48px;
+  background-color: rgba(253, 240, 238, 0.96);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Dripping Honey Flow Below Header ─────────────────────────────────────── */
+.honeyDripOverlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+  z-index: 999;
+  overflow: visible;
+}
+
+.honeyDripImage {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0.96;
+  filter: drop-shadow(0 8px 16px rgba(217, 119, 6, 0.3));
 }
 
 .container {
@@ -29,13 +51,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 10;
 }
 
 /* ── Brand Logo ───────────────────────────────────────────────────────────── */
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   color: #1a1a1a;
   z-index: 1001;
@@ -52,7 +76,7 @@
 }
 
 .brandBee {
-  width: 38px;
+  width: 32px;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -65,7 +89,7 @@
 .brandText {
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #1a1a1a;
@@ -80,7 +104,7 @@
 .navMenu {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 28px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -90,12 +114,12 @@
   position: relative;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #1a1a1a;
   text-decoration: none;
   letter-spacing: 0.06em;
-  padding: 6px 2px;
+  padding: 4px 2px;
   transition: color 0.2s ease;
 }
 
@@ -121,15 +145,15 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .iconBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -152,10 +176,10 @@
   background-color: #ffcc26;
   color: #000;
   font-family: 'Jaro', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -168,14 +192,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 28px;
-  height: 44px;
+  padding: 0 22px;
+  height: 38px;
   background-color: #ffcc26;
   border-radius: 8px;
   cursor: pointer;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #000;
   letter-spacing: 0.08em;

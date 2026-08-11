@@ -316,7 +316,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Previous slide"
               onClick={() => nudge(-1)}
-              className="absolute left-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background"
+              className="absolute left-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-amber-400/20 p-2.5 text-amber-950 backdrop-blur-md transition hover:bg-amber-400 border border-amber-400/50 shadow-md"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -324,7 +324,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Next slide"
               onClick={() => nudge(1)}
-              className="absolute right-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background"
+              className="absolute right-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-amber-400/20 p-2.5 text-amber-950 backdrop-blur-md transition hover:bg-amber-400 border border-amber-400/50 shadow-md"
             >
               <ChevronRight className="size-5" />
             </button>
@@ -335,22 +335,22 @@ export function CoverflowCarousel({
       {showCaption && active?.title && (
         <div
           key={selected}
-          className="mt-2 flex flex-col items-center px-6 duration-300 animate-in fade-in"
+          className="mt-4 flex flex-col items-center px-6 duration-300 animate-in fade-in"
         >
-          <p className="text-[15px] font-semibold tracking-tight text-foreground">
+          <p className="text-xl md:text-2xl font-bold tracking-tight text-stone-900">
             {active.title}
           </p>
           {active.subtitle && (
-            <p className="mt-1 text-[13px] text-muted-foreground">
+            <p className="mt-0.5 text-sm md:text-base text-stone-600 font-medium">
               {active.subtitle}
             </p>
           )}
           {active.meta && active.meta.length > 0 && (
-            <dl className="mt-10 w-full max-w-[230px] text-[12px]">
+            <dl className="mt-4 w-full max-w-[280px] text-xs md:text-sm bg-amber-100/60 p-3.5 rounded-xl border border-amber-200/80 shadow-sm">
               {active.meta.map((row) => (
-                <div key={row.label} className="flex justify-between py-[5px]">
-                  <dt className="text-muted-foreground">{row.label}</dt>
-                  <dd className="font-medium text-foreground">{row.value}</dd>
+                <div key={row.label} className="flex justify-between py-1 border-b border-amber-200/50 last:border-0">
+                  <dt className="text-stone-600 font-medium">{row.label}</dt>
+                  <dd className="font-semibold text-amber-900">{row.value}</dd>
                 </div>
               ))}
             </dl>
@@ -368,8 +368,8 @@ export function CoverflowCarousel({
               aria-current={index === selected}
               onClick={() => goTo(index)}
               className={cn(
-                "size-2 rounded-full bg-foreground transition-opacity",
-                index === selected ? "opacity-100" : "opacity-30",
+                "h-2 transition-all duration-300 rounded-full",
+                index === selected ? "w-6 bg-amber-500 opacity-100" : "w-2 bg-stone-400 opacity-40 hover:opacity-75",
               )}
             />
           ))}
