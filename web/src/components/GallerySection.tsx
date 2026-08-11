@@ -1,65 +1,103 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { CoverflowCarousel, CoverflowSlide } from '@/components/ui/coverflow-carousel';
 import styles from './GallerySection.module.css';
 
-interface GalleryItem {
-  id: number;
-  src: string;
-  alt: string;
-}
-
-const GALLERY_ITEMS: GalleryItem[] = [
+const GALLERY_SLIDES: CoverflowSlide[] = [
   {
-    id: 1,
     src: '/assets/gallery/g1.jpg',
     alt: 'Beekeeper inspecting honeycomb frame under blue sky',
+    title: 'Golden Honeycomb Harvest',
+    subtitle: 'Italian Apennines Apiary',
+    meta: [
+      { label: 'Harvest', value: 'Summer 2026' },
+      { label: 'Colonies', value: '45 Hives' },
+      { label: 'Purity', value: '100% Raw' },
+    ],
   },
   {
-    id: 2,
     src: '/assets/gallery/g2.jpg',
     alt: 'Close-up of worker bees on hive box',
+    title: 'Hive Colony Vitality',
+    subtitle: 'Apis Mellifera Sanctuary',
+    meta: [
+      { label: 'Species', value: 'Italian Honeybee' },
+      { label: 'Flora', value: 'Wild Clover & Thyme' },
+      { label: 'Status', value: 'Thriving' },
+    ],
   },
   {
-    id: 3,
     src: '/assets/gallery/g4.jpg',
     alt: 'Smiling female beekeeper holding smoker tool',
+    title: 'Master Artisans',
+    subtitle: 'Traditional Sustainable Care',
+    meta: [
+      { label: 'Technique', value: 'Natural Smoker' },
+      { label: 'Additives', value: 'Zero Chemicals' },
+      { label: 'Care', value: 'Ethical Beekeeping' },
+    ],
   },
   {
-    id: 4,
     src: '/assets/gallery/g3.jpg',
     alt: 'Bee collecting wildflower pollen',
+    title: 'Wildflower Nectar Bloom',
+    subtitle: 'High Altitude Flora',
+    meta: [
+      { label: 'Elevation', value: '1,200 meters' },
+      { label: 'Nectar Source', value: 'Alpine Flora' },
+      { label: 'Notes', value: 'Floral & Citrus' },
+    ],
   },
   {
-    id: 5,
     src: '/assets/gallery/g5.jpg',
     alt: 'Two beekeepers in suits inspecting meadow hives',
+    title: 'Meadow Sanctuary',
+    subtitle: 'Organic Certified Apiary',
+    meta: [
+      { label: 'Location', value: 'Tuscan Hills' },
+      { label: 'Environment', value: 'Pesticide Free' },
+      { label: 'Cert', value: 'Bio-Organic' },
+    ],
   },
   {
-    id: 6,
     src: '/assets/gallery/g6.jpg',
     alt: 'Pure raw honey glass jar with granola bars and wooden dipper',
+    title: 'Artisanal Jarring',
+    subtitle: 'Farm-to-Table Fresh',
+    meta: [
+      { label: 'Packaging', value: 'Recyclable Glass' },
+      { label: 'Texture', value: 'Unfiltered Creamed' },
+      { label: 'Pairing', value: 'Aged Cheese & Tea' },
+    ],
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=800&fit=crop&q=80&auto=format',
+    alt: 'Golden raw honey pouring from wooden dipper',
+    title: 'Liquid Amber',
+    subtitle: 'Cold-Extracted Nectar',
+    meta: [
+      { label: 'Viscosity', value: 'Rich & Silky' },
+      { label: 'Enzymes', value: 'Preserved Live' },
+      { label: 'Color', value: 'Deep Amber' },
+    ],
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=800&fit=crop&q=80&auto=format',
+    alt: 'Morning sunlit mist over bee farm valley',
+    title: 'Dawn Over the Apiary',
+    subtitle: 'First Light Foraging',
+    meta: [
+      { label: 'Time', value: '6:00 AM Dawn' },
+      { label: 'Climate', value: 'Crisp Alpine Air' },
+      { label: 'Yield', value: 'Single Origin' },
+    ],
   },
 ];
 
 export default function GallerySection() {
-  const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
-
-  // Handle ESC key for modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedPhoto(null);
-    };
-    if (selectedPhoto) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
-    };
-  }, [selectedPhoto]);
+  const [viewMode, setViewMode] = useState<'coverflow' | 'grid'>('coverflow');
+  const [selectedPhoto, setSelectedPhoto] = useState<CoverflowSlide | null>(null);
 
   return (
     <section className={styles.section} aria-label="Our Gallery">
@@ -77,64 +115,89 @@ export default function GallerySection() {
       <div className={styles.honeycombBg} aria-hidden="true" />
 
       <div className={styles.container}>
-        {/* Centered Header Section (Matching reference screenshot text) */}
+        {/* Centered Header Section */}
         <header className={styles.header}>
           <h2 className={styles.mainTitle}>OUR GALLERY</h2>
           <p className={styles.description}>
-            Meadlight is a true beehive of activity! Check out the latest news and events in our image gallery and see for yourself.
+            Meadlight is a true beehive of activity! Explore our 3D Coverflow gallery to experience life at our artisanal bee farm.
           </p>
+
+          {/* View Switcher Toggle */}
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setViewMode('coverflow')}
+              className={`px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                viewMode === 'coverflow'
+                  ? 'bg-[#f3b233] text-[#1c1917] shadow-md scale-105'
+                  : 'bg-stone-200/80 text-stone-700 hover:bg-stone-300'
+              }`}
+            >
+              3D Coverflow
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('grid')}
+              className={`px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                viewMode === 'grid'
+                  ? 'bg-[#f3b233] text-[#1c1917] shadow-md scale-105'
+                  : 'bg-stone-200/80 text-stone-700 hover:bg-stone-300'
+              }`}
+            >
+              Classic Grid
+            </button>
+          </div>
         </header>
 
-        {/* 6 Photo 3x2 Grid (Matching reference screenshot 1:1) */}
-        <div className={styles.galleryGrid}>
-          {GALLERY_ITEMS.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              className={styles.gridItem}
-              onClick={() => setSelectedPhoto(item)}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.55, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <img src={item.src} alt={item.alt} className={styles.photo} />
-            </motion.div>
-          ))}
-        </div>
+        {/* 3D Coverflow View */}
+        {viewMode === 'coverflow' ? (
+          <div className="my-8 rounded-3xl bg-stone-900/95 p-6 md:p-10 shadow-2xl backdrop-blur border border-amber-900/30">
+            <CoverflowCarousel
+              slides={GALLERY_SLIDES}
+              showNavigation={true}
+              showPagination={true}
+              showCaption={true}
+              cardWidth="clamp(220px, 28vw, 340px)"
+              rotate={42}
+              depth={0.65}
+              fade={0.12}
+            />
+          </div>
+        ) : (
+          /* Classic Grid View */
+          <div className={styles.galleryGrid}>
+            {GALLERY_SLIDES.map((item, idx) => (
+              <div
+                key={idx}
+                className={styles.gridItem}
+                onClick={() => setSelectedPhoto(item)}
+              >
+                <img src={item.src} alt={item.alt} className={styles.photo} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Photo Lightbox Modal */}
-      <AnimatePresence>
-        {selectedPhoto && (
-          <motion.div
-            className={styles.modalOverlay}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedPhoto(null)}
-          >
-            <motion.div
-              className={styles.modalImageWrapper}
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 15 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              onClick={(e) => e.stopPropagation()}
+      {/* Lightbox Modal for Grid View */}
+      {selectedPhoto && (
+        <div
+          className={styles.modalOverlay}
+          onClick={() => setSelectedPhoto(null)}
+        >
+          <div className={styles.modalImageWrapper} onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className={styles.closeBtn}
+              onClick={() => setSelectedPhoto(null)}
+              aria-label="Close photo view"
             >
-              <button
-                type="button"
-                className={styles.closeBtn}
-                onClick={() => setSelectedPhoto(null)}
-                aria-label="Close photo view"
-              >
-                ✕
-              </button>
-
-              <img src={selectedPhoto.src} alt={selectedPhoto.alt} className={styles.modalImage} />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              ✕
+            </button>
+            <img src={selectedPhoto.src} alt={selectedPhoto.alt} className={styles.modalImage} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
