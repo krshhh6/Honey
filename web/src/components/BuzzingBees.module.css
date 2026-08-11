@@ -1,0 +1,69 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BuzzingBees.module.css
+   Meadlight Landing Page — Ambient Interactive Buzzing Bees Overlay Layer
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 15;
+  overflow: hidden;
+}
+
+.beeWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  pointer-events: auto; /* allows optional direct tap/hover on bee itself */
+  cursor: pointer;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+  transform-origin: center center;
+}
+
+.beeInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 10px rgba(217, 119, 6, 0.35));
+}
+
+.beeIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Wing flutter animation layer */
+.wings {
+  position: absolute;
+  top: 2px;
+  width: 32px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Mobile tap ripple / startled indicator effect */
+.fleeGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 204, 38, 0.6) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.isFleeing .fleeGlow {
+  opacity: 1;
+}

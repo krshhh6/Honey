@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Honey Jar Body -->
+  <rect x="18" y="22" width="28" height="34" rx="6" fill="#FDE68A" stroke="#D97706" stroke-width="2.5"/>
+  <!-- Jar Lid -->
+  <rect x="15" y="14" width="34" height="8" rx="3" fill="#78350F" stroke="#451A03" stroke-width="2"/>
+  <!-- Honey Fill & Drip -->
+  <path d="M20 32 C24 36, 40 36, 44 32 L44 50 C44 53, 41 55, 38 55 L26 55 C23 55, 20 53, 20 50 Z" fill="#F59E0B"/>
+  <path d="M32 6 C32 6, 38 12, 38 15 C38 18.3, 35.3 21, 32 21 C28.7 21, 26 18.3, 26 15 C26 12, 32 6, 32 6 Z" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+  <!-- Highlight -->
+  <path d="M22 26 L22 46" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+</svg>

@@ -1,0 +1,28 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   JarBees.module.css
+   Hero Section Jar Bees Component
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.jarBeesContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.beeInstance {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  pointer-events: auto;
+  cursor: pointer;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.beeIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(217, 119, 6, 0.3));
+}

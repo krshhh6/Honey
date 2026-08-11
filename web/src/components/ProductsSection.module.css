@@ -1,0 +1,250 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ProductsSection.module.css
+   Meadlight Landing Page — Products Showcase Section
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 110px 6% 130px;
+  background: linear-gradient(180deg, #fff7eb 0%, #fef3c7 50%, #fdf0ee 100%);
+  color: #1c1917;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Honeycomb Pattern */
+.honeycombBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #fff8ea 0.75px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Seamless Organic Top Wave Separator */
+.sectionWaveTop {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 115px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sectionWaveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Botanical Eucalyptus Decor */
+.botanicalLeft {
+  position: absolute;
+  top: 40px;
+  left: -80px;
+  width: clamp(220px, 26vw, 420px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  filter: drop-shadow(0 16px 32px rgba(16, 185, 129, 0.12));
+  transform-origin: top left;
+}
+
+.botanicalRight {
+  position: absolute;
+  bottom: 20px;
+  right: -60px;
+  width: clamp(200px, 24vw, 380px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  filter: drop-shadow(0 16px 32px rgba(16, 185, 129, 0.12));
+  transform: scaleX(-1) rotate(15deg);
+  transform-origin: bottom right;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.subTitlePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 20px;
+  background: rgba(255, 204, 38, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b45309;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+}
+
+.subTitleDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+}
+
+.mainTitle {
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: clamp(48px, 6.2vw, 96px);
+  font-weight: 400;
+  color: #ffc300;
+  -webkit-text-fill-color: #ffc300;
+  text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.18);
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.description {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: #78350f;
+  font-style: italic;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Products Grid */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 36px;
+}
+
+.productCard {
+  position: relative;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(254, 243, 199, 0.95);
+  border-radius: 28px;
+  box-shadow: 0 16px 40px -8px rgba(217, 119, 6, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.productCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px -10px rgba(217, 119, 6, 0.22);
+  border-color: rgba(245, 158, 11, 0.6);
+}
+
+.productBadge {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  padding: 5px 14px;
+  background: #ffcc26;
+  color: #451a03;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImg {
+  max-width: 80%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(180, 83, 9, 0.2));
+  transition: transform 0.4s ease;
+}
+
+.productCard:hover .productImg {
+  transform: scale(1.06) rotate(2deg);
+}
+
+.cardTitle {
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: 28px;
+  color: #1c1917;
+  margin: 0 0 8px 0;
+}
+
+.cardDesc {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14.5px;
+  color: #57534e;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.cardFooter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(254, 243, 199, 0.9);
+}
+
+.price {
+  font-family: 'Jaro', sans-serif;
+  font-size: 26px;
+  color: #d97706;
+}
+
+.buyBtn {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #ffcc26 0%, #f59e0b 100%);
+  color: #451a03;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  transition: all 0.25s ease;
+}
+
+.buyBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+}

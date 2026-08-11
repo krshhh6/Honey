@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Antennae -->
+  <path d="M22 18 Q16 12 12 16" stroke="#451A03" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="11" cy="16" r="2" fill="#451A03"/>
+  <path d="M28 16 Q26 8 20 10" stroke="#451A03" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="19" cy="10" r="2" fill="#451A03"/>
+
+  <!-- Wings (translucent) -->
+  <g opacity="0.88">
+    <ellipse cx="36" cy="16" rx="10" ry="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="2" transform="rotate(35 36 16)"/>
+    <ellipse cx="44" cy="24" rx="8" ry="13" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.8" transform="rotate(55 44 24)"/>
+  </g>
+
+  <!-- Bee Body -->
+  <ellipse cx="34" cy="38" rx="16" ry="19" fill="#FFC300" stroke="#78350F" stroke-width="2.5" transform="rotate(-25 34 38)"/>
+
+  <!-- Body Stripes -->
+  <path d="M24 32 Q34 36 44 29" stroke="#1C1917" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 40 Q32 44 42 36" stroke="#1C1917" stroke-width="4" stroke-linecap="round"/>
+  <path d="M24 47 Q32 50 38 45" stroke="#1C1917" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Stinger -->
+  <path d="M43 50 L49 56 L41 53 Z" fill="#1C1917"/>
+
+  <!-- Head -->
+  <circle cx="22" cy="25" r="9" fill="#78350F" stroke="#451A03" stroke-width="2"/>
+
+  <!-- Visible Cute Eyes & Catchlights -->
+  <ellipse cx="19" cy="24" rx="3" ry="4" fill="#000000"/>
+  <circle cx="18" cy="22.5" r="1" fill="#FFFFFF"/>
+  <ellipse cx="25" cy="23" rx="2.5" ry="3.5" fill="#000000"/>
+  <circle cx="24" cy="21.5" r="0.9" fill="#FFFFFF"/>
+
+  <!-- Cute Cheeks -->
+  <circle cx="18" cy="28" r="1.5" fill="#F43F5E" opacity="0.6"/>
+</svg>

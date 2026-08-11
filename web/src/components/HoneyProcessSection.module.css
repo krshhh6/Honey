@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HoneyProcessSection.module.css
+   Meadlight Landing Page — "How Honey Is Made" Steps & Stories Section
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 85px 5% 95px;
+  background: linear-gradient(180deg, #fdf0ee 0%, #fff8ea 50%, #fdf0ee 100%);
+  color: #1c1917;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Honeycomb Pattern */
+.honeycombBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #fff8ea 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* ── Section Organic Wave Dividers ─────────────────────────────────────── */
+.sectionWaveTop {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sectionWaveBottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+  transform: rotate(180deg);
+}
+
+.sectionWaveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Botanical Eucalyptus Branches (Decorative Floating Elements) ──────────── */
+.botanicalLeft {
+  position: absolute;
+  top: 40px;
+  left: -80px;
+  width: clamp(220px, 26vw, 420px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  filter: drop-shadow(0 16px 32px rgba(16, 185, 129, 0.12));
+  transform-origin: top left;
+}
+
+.botanicalRight {
+  position: absolute;
+  bottom: 20px;
+  right: -60px;
+  width: clamp(200px, 24vw, 380px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  filter: drop-shadow(0 16px 32px rgba(16, 185, 129, 0.12));
+  transform: scaleX(-1) rotate(15deg);
+  transform-origin: bottom right;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Section Header ──────────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.subTitlePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 20px;
+  background: rgba(255, 204, 38, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b45309;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+}
+
+.subTitlePillDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+}
+
+.sectionTitle {
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: clamp(44px, 5.8vw, 88px);
+  font-weight: 400;
+  color: #ffc300;
+  -webkit-text-fill-color: #ffc300;
+  text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.18);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0 0 16px 0;
+}
+
+.sectionIntro {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: #57534e;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Timeline Container ──────────────────────────────────────────────────── */
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* ── Desktop Connecting Line SVG ─────────────────────────────────────────── */
+.desktopSvgContainer {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+  display: block;
+}
+
+.mobileSvgContainer {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 36px;
+  width: 40px;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+
+.connectingPathBg {
+  stroke: rgba(245, 158, 11, 0.18);
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.connectingPathAnimated {
+  stroke: #f59e0b;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* ── Step List (Semantic <ol>) ───────────────────────────────────────────── */
+.stepList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Step Item ───────────────────────────────────────────────────────────── */
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Card Box */
+.card {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(254, 243, 199, 0.95);
+  border-radius: 22px;
+  padding: 32px 20px 28px;
+  box-shadow: 0 14px 36px -8px rgba(217, 119, 6, 0.09), 0 4px 12px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 22px 48px -10px rgba(217, 119, 6, 0.18), 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Icon & Badge Wrapper */
+.iconWrapper {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #fde68a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.12);
+}
+
+.stepIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  will-change: transform;
+}
+
+/* Step Number Badge */
+.stepBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffcc26;
+  color: #451a03;
+  font-family: 'Jaro', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.25);
+}
+
+/* Headings & Text */
+.stepTitle {
+  font-family: 'Jaro', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #1c1917;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
+}
+
+.stepDescription {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #57534e;
+  margin: 0 0 18px 0;
+  flex-grow: 1;
+}
+
+/* "Read Story" Button */
+.storyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(254, 243, 199, 0.6);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 9999px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #b45309;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card:hover .storyBtn {
+  background: #ffcc26;
+  border-color: #f59e0b;
+  color: #000;
+  transform: scale(1.04);
+}
+
+.storyBtnIcon {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .storyBtnIcon {
+  transform: translateX(3px);
+}
+
+/* ── Interactive Story Modal ─────────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(28, 25, 23, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background: #fffefb;
+  border: 2px solid #fde68a;
+  border-radius: 28px;
+  padding: 36px 32px 32px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.modalDecoration {
+  position: absolute;
+  top: -40px;
+  right: -50px;
+  width: 180px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: #ffcc26;
+  border-radius: 9999px;
+  font-family: 'Jaro', sans-serif;
+  font-size: 14px;
+  color: #000;
+}
+
+.modalCloseBtn {
+  background: rgba(245, 245, 244, 0.8);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #57534e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.modalTitle {
+  font-family: 'Jaro', sans-serif;
+  font-size: 34px;
+  color: #1c1917;
+  margin: 0 0 14px 0;
+  line-height: 1.1;
+}
+
+.modalStoryText {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #44403c;
+  margin-bottom: 24px;
+}
+
+.modalFactBox {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.modalFactIcon {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.modalFactText {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #78350f;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE (<768px) — Mobile Stacked Timeline & Flora
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 20px 90px;
+  }
+
+  .botanicalLeft {
+    width: 180px;
+    left: -60px;
+    top: 20px;
+    opacity: 0.6;
+  }
+
+  .botanicalRight {
+    width: 160px;
+    right: -40px;
+    bottom: 10px;
+    opacity: 0.6;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .desktopSvgContainer {
+    display: none;
+  }
+
+  .mobileSvgContainer {
+    display: block;
+  }
+
+  .stepList {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-left: 20px;
+  }
+
+  .stepItem {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 16px;
+    margin-left: 12px;
+  }
+
+  .iconWrapper {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    margin-bottom: 0;
+  }
+
+  .stepIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stepBadge {
+    top: -4px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stepTitle {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .stepDescription {
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+
+  .modalContent {
+    padding: 24px 20px;
+  }
+
+  .modalTitle {
+    font-size: 26px;
+  }
+}

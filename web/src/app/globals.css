@@ -1,142 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+/* ─── Fonts ──────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Irish+Grover&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── CSS Custom Properties — Fluid Type Scale ──────────────────────────────── */
-:root {
-  --step--1: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --step-0:  clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
-  --step-1:  clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
-  --step-2:  clamp(1.35rem, 1.1rem + 1.25vw, 1.875rem);
-  --step-3:  clamp(1.75rem, 1.2rem + 2.75vw, 3rem);
-  --step-4:  clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
-  --step-5:  clamp(3.5rem, 1rem + 12.5vw, 9rem);
+/* ─── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Brand easing */
-  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Base Reset ──────────────────────────────────────────────────────────── */
-@layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+img { display: block; max-width: 100%; }
 
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-  body {
-    @apply bg-cream-50 text-walnut-900 font-body;
-    font-size: var(--step-0);
-    /* Grain texture overlay */
-    position: relative;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: multiply;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-walnut-900;
-    font-weight: 700;
-    line-height: 0.9;
-  }
-
-  p {
-    @apply font-body text-walnut-900/80;
-    line-height: 1.65;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  img, video {
-    display: block;
-    max-width: 100%;
-  }
-
-  ::selection {
-    @apply bg-honey-400 text-cream-50;
-  }
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #fdf0ee; /* cream pink — Figma canvas colour */
 }
 
-/* ─── Focus Styles ───────────────────────────────────────────────────────── */
-@layer base {
-  :focus-visible {
-    outline: 2px solid theme('colors.honey.500');
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAV — ABOUT pill, top-right
+   ═══════════════════════════════════════════════════════════════════════════ */
+.nav {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  z-index: 50;
 }
 
-/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+.nav__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  height: 44px;
+  background-color: #ffcc26;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
 }
-::-webkit-scrollbar-track {
-  background: theme('colors.cream.100');
-}
-::-webkit-scrollbar-thumb {
-  background: theme('colors.wax.400');
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.honey.500');
+.nav__pill:hover { opacity: 0.85; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO LAYOUT — two-column: text left | jar right
+   ═══════════════════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3% 0 7%;
+  gap: 3%;                   /* small comfortable gap between text and jar */
 }
 
-/* ─── Utilities ───────────────────────────────────────────────────────────── */
-@layer utilities {
-  .text-step--1 { font-size: var(--step--1); }
-  .text-step-0  { font-size: var(--step-0); }
-  .text-step-1  { font-size: var(--step-1); }
-  .text-step-2  { font-size: var(--step-2); }
-  .text-step-3  { font-size: var(--step-3); }
-  .text-step-4  { font-size: var(--step-4); }
-  .text-step-5  { font-size: var(--step-5); }
+/* ── Left: text block ──────────────────────────────────────────────────────*/
+.hero__text {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 20;
+  /* Push slightly above centre to match Figma */
+  margin-top: -2vh;
+}
 
-  /* Underline draw animation */
-  .link-underline {
-    position: relative;
+/* "The Brand New Drink" */
+.label {
+  font-family: 'Irish Grover', cursive;
+  font-size: clamp(14px, 1.5vw, 24px);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.2;
+  transform: rotate(-8deg) translateX(-4px);
+  transform-origin: left center;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* Squiggle */
+.squiggle {
+  width: clamp(160px, 18vw, 320px);
+  overflow: visible;
+  margin-bottom: 6px;
+}
+.squiggle img { width: 100%; height: auto; }
+
+/* Headline */
+.headline {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.0;
+}
+
+.headline__line {
+  display: block;
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: clamp(40px, 6.2vw, 112px);
+  font-weight: 400;
+  color: #FFC300;
+  -webkit-text-fill-color: #FFC300;
+  text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.20);
+  letter-spacing: -0.01em;
+  line-height: 1.0;
+}
+
+/* ── Right: jar ────────────────────────────────────────────────────────── */
+.hero__jar {
+  flex: 0 0 auto;
+  z-index: 15;
+  width: clamp(220px, 27vw, 500px);  /* slightly smaller than before */
+  margin-bottom: -4vh;
+  margin-left: -1vw;                 /* just a little nudge left, not aggressive */
+}
+.hero__jar img {
+  width: 100%;
+  height: auto;
+  /* remove white bg with mix-blend-mode — jar has white bg so we multiply */
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 24px 48px rgba(160, 80, 0, 0.16));
+}
+
+/* ── Flower — pinned to right edge ─────────────────────────────────────── */
+.hero__flower {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: clamp(100px, 12vw, 220px);
+  pointer-events: none;
+  opacity: 0.85;
+}
+.hero__flower img { width: 100%; height: auto; }
+
+/* .hero__bee — fully controlled by GSAP in page.tsx, no static CSS needed */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .page { height: auto; min-height: 100svh; }
+
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 6% 60px;
+    gap: 32px;
   }
-  .link-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: theme('colors.honey.400');
-    transition: width 0.4s var(--ease-expo);
+
+  .hero__text { margin-top: 0; align-items: center; text-align: center; }
+
+  .label { transform: rotate(-6deg); }
+
+  .hero__jar {
+    width: clamp(220px, 55vw, 400px);
+    margin-bottom: 0;
   }
-  .link-underline:hover::after,
-  .link-underline:focus-visible::after {
-    width: 100%;
+
+  .hero__flower { display: none; }
+
+  .hero__bee {
+    left: 2%;
+    top: auto;
+    bottom: 4%;
+    width: clamp(90px, 18vw, 160px);
   }
+
+  .headline__line { font-size: clamp(32px, 9vw, 80px); }
+  .nav { top: 20px; right: 24px; }
+  .nav__pill { height: 38px; font-size: 15px; padding: 0 20px; }
+}
+
+@media (max-width: 480px) {
+  .headline__line { font-size: clamp(28px, 11vw, 60px); }
 }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Bee body -->
+  <ellipse cx="32" cy="36" rx="14" ry="18" fill="#F59E0B" stroke="#78350F" stroke-width="2.5" transform="rotate(-20 32 36)"/>
+  <!-- Bee stripes -->
+  <path d="M22 30 Q32 34 42 27" stroke="#18181B" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M20 38 Q30 42 40 35" stroke="#18181B" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Bee wings -->
+  <ellipse cx="22" cy="20" rx="9" ry="14" fill="#E0F2FE" fill-opacity="0.8" stroke="#0284C7" stroke-width="2" transform="rotate(-30 22 20)"/>
+  <ellipse cx="36" cy="18" rx="8" ry="12" fill="#E0F2FE" fill-opacity="0.8" stroke="#0284C7" stroke-width="2" transform="rotate(15 36 18)"/>
+  <!-- Bee stinger & antenna -->
+  <path d="M41 47 L46 52" stroke="#18181B" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M22 24 Q18 20 14 22" stroke="#78350F" stroke-width="2" stroke-linecap="round"/>
+  <!-- Flower Nectar dots -->
+  <circle cx="12" cy="50" r="3" fill="#F43F5E"/>
+  <circle cx="52" cy="14" r="2.5" fill="#FBBF24"/>
+</svg>
