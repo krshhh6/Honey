@@ -1,0 +1,541 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Honey | Pure Raw Honey from Bihar</title>
+  <meta name="description" content="Natural Honey (nechural honey) - Patna, Bihar pure honey farm. 4.8 stars 142+ customers. Call: 099390 55989" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="honey-drop-loader">
+        <svg viewBox="0 0 80 100" class="drop-svg">
+          <path class="drop-fill" d="M40 0 C40 0 70 35 70 58 A30 30 0 0 1 10 58 C10 35 40 0 40 0Z"/>
+        </svg>
+      </div>
+      <div class="preloader-brand">
+        <span class="pre-en">Natural Honey</span>
+        <span class="pre-hi">नेचुरल हनी</span>
+      </div>
+      <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+      <div class="pre-percent" id="prePercent">0%</div>
+    </div>
+  </div>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-circle" id="cursorCircle"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <div class="logo-icon">🍯</div>
+        <div class="logo-text">
+          <span class="logo-en">Natural Honey</span>
+          <span class="logo-hi">नेचुरल हनी</span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">Our Story</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#benefits" class="nav-link">Benefits</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="tel:09939055989" class="nav-cta">Order Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#hero" class="mobile-link">Home</a></li>
+      <li><a href="#about" class="mobile-link">Our Story</a></li>
+      <li><a href="#products" class="mobile-link">Products</a></li>
+      <li><a href="#benefits" class="mobile-link">Benefits</a></li>
+      <li><a href="#reviews" class="mobile-link">Reviews</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+    <a href="tel:09939055989" class="mobile-cta">Call: 099390 55989</a>
+  </div>
+
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="particles-container" id="particlesHero"></div>
+    <div class="hero-content">
+      <div class="hero-badge" id="heroBadge">
+        <span>★</span> 4.8 / 5 · 142 Google Reviews <span>★</span>
+      </div>
+      <h1 class="hero-title" id="heroTitle">
+        <span class="line1">Pure Nature's</span>
+        <span class="line2 gradient-text">Golden Gift</span>
+        <span class="line3-hindi">प्रकृति का सोना</span>
+      </h1>
+      <p class="hero-subtitle" id="heroSubtitle">
+        100% raw, unadulterated honey — straight from our bee farms in<br/>
+        <strong>Mustafapur, Patna, Bihar</strong>
+      </p>
+      <div class="hero-actions" id="heroActions">
+        <a href="#products" class="btn-primary"><span>Explore Products</span></a>
+        <a href="tel:09939055989" class="btn-secondary"><span>Call: 099390 55989</span></a>
+      </div>
+      <div class="hero-stats" id="heroStats">
+        <div class="stat">
+          <div class="stat-num count-up" data-target="142">0</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">4.8<span class="stat-unit">★</span></div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">100<span class="stat-unit">%</span></div>
+          <div class="stat-label">Pure & Natural</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-container" id="heroImageWrap">
+      <div class="hero-glow-ring"></div>
+      <img src="assets/images/honey_hero.jpg" alt="Natural Honey Product" class="hero-img" id="heroImg" />
+      <div class="floating-badge fb1">Raw Honey</div>
+      <div class="floating-badge fb2">No Additives</div>
+      <div class="floating-badge fb3">Women Owned</div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Pure Raw Honey</span><span class="mx">·</span>
+        <span>Honey Farm Bihar</span><span class="mx">·</span>
+        <span>No Sugar Added</span><span class="mx">·</span>
+        <span>4.8 Star Rated</span><span class="mx">·</span>
+        <span>100% Natural</span><span class="mx">·</span>
+        <span>Women Owned</span><span class="mx">·</span>
+        <span>Patna, Bihar, India</span><span class="mx">·</span>
+        <span>Better Than Dabur</span><span class="mx">·</span>
+        <span>Pure Raw Honey</span><span class="mx">·</span>
+        <span>Honey Farm Bihar</span><span class="mx">·</span>
+        <span>No Sugar Added</span><span class="mx">·</span>
+        <span>4.8 Star Rated</span><span class="mx">·</span>
+        <span>100% Natural</span><span class="mx">·</span>
+        <span>Women Owned</span><span class="mx">·</span>
+        <span>Patna, Bihar, India</span><span class="mx">·</span>
+        <span>Better Than Dabur</span><span class="mx">·</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-img-wrap" data-tilt data-tilt-max="8">
+            <img src="assets/images/honey_farm.jpg" alt="Our Honey Farm" class="about-img" />
+            <div class="about-img-badge">
+              <div class="badge-icon">🌱</div>
+              <div><strong>Patna Farm</strong><span>Bihar, India</span></div>
+            </div>
+          </div>
+          <div class="about-bee-card">
+            <img src="assets/images/bee_flying.jpg" alt="Our Bees" />
+            <p>Our bees work all day so you get the best honey</p>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-badge reveal-up">Our Story</div>
+          <h2 class="section-title reveal-up">
+            Nature's Purest<br/>
+            <span class="gradient-text">Liquid Gold</span>
+          </h2>
+          <p class="section-text reveal-up">
+            We are <strong>Natural Honey</strong> — a proudly women-owned honey farm nestled in the 
+            green farmlands of <strong>Mustafapur, Patna, Bihar</strong>. Our bees roam freely 
+            through wildflower meadows and mustard fields, crafting honey as pure as nature intended.
+          </p>
+          <p class="section-text reveal-up">
+            Unlike mass-produced brands, we never add sugar, colors, or preservatives. 
+            What you taste is exactly what our bees made — nothing more, nothing less.
+          </p>
+          <div class="about-features reveal-up">
+            <div class="feature-item">
+              <div class="feature-icon">🏅</div>
+              <div><strong>Certified Natural</strong><span>No adulteration, no chemicals</span></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🌍</div>
+              <div><strong>Farm to Table</strong><span>Direct from our hives to you</span></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">♀</div>
+              <div><strong>Women-Owned</strong><span>Empowering local communities</span></div>
+            </div>
+          </div>
+          <a href="#contact" class="btn-primary reveal-up mt-2">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="honeycomb-bg-deco" aria-hidden="true">
+      <img src="assets/images/honeycomb_texture.jpg" alt="" />
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal-up">Our Products</div>
+        <h2 class="section-title reveal-up">
+          Straight from the<br/>
+          <span class="gradient-text">Hive to You</span>
+        </h2>
+        <p class="section-subtitle reveal-up">Each jar holds the concentrated essence of nature's finest flowers</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal-up" data-tilt data-tilt-max="8">
+          <div class="product-img-wrap">
+            <img src="assets/images/honey_jar.jpg" alt="Raw Wildflower Honey" class="product-img" />
+            <div class="product-overlay"><a href="tel:09939055989" class="product-order-btn">Order Now</a></div>
+            <div class="product-badge-tag">Best Seller</div>
+          </div>
+          <div class="product-info">
+            <h3>Raw Wildflower Honey</h3>
+            <p>Multi-floral raw honey with rich complex flavor. Unfiltered, unpasteurized.</p>
+            <div class="product-footer">
+              <div class="product-rating">★★★★★ <span>(4.8)</span></div>
+              <a href="tel:09939055989" class="product-cta">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal-up" data-tilt data-tilt-max="8">
+          <div class="product-img-wrap">
+            <img src="assets/images/honey_hero.jpg" alt="Pure Raw Honey" class="product-img" />
+            <div class="product-overlay"><a href="tel:09939055989" class="product-order-btn">Order Now</a></div>
+            <div class="product-badge-tag" style="background:#2d6a4f">Pure Natural</div>
+          </div>
+          <div class="product-info">
+            <h3>Pure Raw Honey</h3>
+            <p>Single-source pure honey — thick, naturally sweet with beautiful floral notes.</p>
+            <div class="product-footer">
+              <div class="product-rating">★★★★★ <span>(4.9)</span></div>
+              <a href="tel:09939055989" class="product-cta">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal-up" data-tilt data-tilt-max="8">
+          <div class="product-img-wrap">
+            <img src="assets/images/honeycomb_texture.jpg" alt="Raw Honeycomb" class="product-img" />
+            <div class="product-overlay"><a href="tel:09939055989" class="product-order-btn">Order Now</a></div>
+            <div class="product-badge-tag" style="background:#7b2d8b">Premium</div>
+          </div>
+          <div class="product-info">
+            <h3>Raw Honeycomb</h3>
+            <p>Honey in its most natural form — the actual comb, wax and all the goodness.</p>
+            <div class="product-footer">
+              <div class="product-rating">★★★★★ <span>(5.0)</span></div>
+              <a href="tel:09939055989" class="product-cta">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <canvas id="honeyCanvas" class="honey-canvas-bg"></canvas>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal-up">Why Choose Us</div>
+        <h2 class="section-title reveal-up"><span class="gradient-text">Nature's Medicine</span><br/>in Every Drop</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">🧬</div></div>
+          <h3>Rich in Antioxidants</h3>
+          <p>Polyphenols that fight free radicals and boost your immunity naturally.</p>
+          <div class="benefit-glow"></div>
+        </div>
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">💪</div></div>
+          <h3>Energy Booster</h3>
+          <p>Natural sugars provide sustained energy without the crash of refined sugar.</p>
+          <div class="benefit-glow"></div>
+        </div>
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">🌿</div></div>
+          <h3>Anti-Bacterial</h3>
+          <p>Contains hydrogen peroxide and bee propolis with powerful antibacterial properties.</p>
+          <div class="benefit-glow"></div>
+        </div>
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">🫀</div></div>
+          <h3>Heart Health</h3>
+          <p>Helps lower bad cholesterol and improve good cholesterol for a healthier heart.</p>
+          <div class="benefit-glow"></div>
+        </div>
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">😴</div></div>
+          <h3>Better Sleep</h3>
+          <p>A teaspoon before bed triggers melatonin release for deeper, restful sleep.</p>
+          <div class="benefit-glow"></div>
+        </div>
+        <div class="benefit-card reveal-up">
+          <div class="benefit-icon-wrap"><div class="benefit-icon">🔬</div></div>
+          <h3>Zero Adulterants</h3>
+          <p>No sugar, no corn syrup, no water — pure as nature made it.</p>
+          <div class="benefit-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal-up">The Difference</div>
+        <h2 class="section-title reveal-up">
+          Natural Honey vs<br/>
+          <span class="gradient-text">Commercial Brands</span>
+        </h2>
+      </div>
+      <div class="comparison-table reveal-up">
+        <div class="comparison-header">
+          <div class="comp-label">Feature</div>
+          <div class="comp-us">Natural Honey</div>
+          <div class="comp-them">Others (e.g. Dabur)</div>
+        </div>
+        <div class="comparison-row"><div class="comp-label">Added Sugar</div><div class="comp-us"><span class="check">No Sugar Added</span></div><div class="comp-them"><span class="cross">Often Mixed</span></div></div>
+        <div class="comparison-row"><div class="comp-label">Source</div><div class="comp-us"><span class="check">Direct Farm</span></div><div class="comp-them"><span class="cross">Factory Processed</span></div></div>
+        <div class="comparison-row"><div class="comp-label">Processing</div><div class="comp-us"><span class="check">Raw / Cold Pressed</span></div><div class="comp-them"><span class="cross">Heat Pasteurized</span></div></div>
+        <div class="comparison-row"><div class="comp-label">Enzymes</div><div class="comp-us"><span class="check">Fully Intact</span></div><div class="comp-them"><span class="cross">Destroyed by Heat</span></div></div>
+        <div class="comparison-row"><div class="comp-label">Pollen</div><div class="comp-us"><span class="check">Natural Pollen</span></div><div class="comp-them"><span class="cross">Filtered Out</span></div></div>
+        <div class="comparison-row"><div class="comp-label">Transparency</div><div class="comp-us"><span class="check">Farm Direct</span></div><div class="comp-them"><span class="cross">Unknown Origin</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal-up">Customer Love</div>
+        <h2 class="section-title reveal-up">What Our Customers<br/><span class="gradient-text">Are Saying</span></h2>
+        <div class="overall-rating reveal-up">
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-num">4.8</div>
+          <div class="rating-count">Based on 142 Google Reviews</div>
+        </div>
+      </div>
+      <div class="reviews-carousel" id="reviewsCarousel">
+        <div class="reviews-track" id="reviewsTrack">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">AY</div>
+              <div class="reviewer-info"><strong>Akhilesh Yogi</strong><span>1 month ago</span></div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">"बहुत-बहुत धन्यवाद रवि रंजन जी — मिलावट के दौर में उत्तम नेचुरल raw honey उपलब्ध कराने के लिए। आप नेचर के असली हीरो हैं!"</p>
+            <div class="review-tag">Pure Honey Fan</div>
+          </div>
+          <div class="review-card featured">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#e91e8c,#c2185b)">AB</div>
+              <div class="reviewer-info"><strong>Asha Bharti Ray</strong><span>8 months ago</span></div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">"Using their honey since three years, when I first tried at Saras Mela, Gandhi Maidan Patna. Great taste. Pure honey. The people are so nice. One should try once — you're going to love it. Keep going, great work!"</p>
+            <div class="review-tag">3 Year Customer</div>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#1565C0,#0d47a1)">KS</div>
+              <div class="reviewer-info"><strong>Karan Singh</strong><span>6 months ago</span></div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">"This honey is the best ever honey I have tasted! Far better than Dabur — Dabur is mixed with sugar. This honey is damn good. I suggest everyone try once!"</p>
+            <div class="review-tag">Better Than Dabur</div>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#2e7d32,#1b5e20)">VC</div>
+              <div class="reviewer-info"><strong>Verified Customer</strong><span>Google Review</span></div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">"I love Natural Honey and would suggest people to try this. Pure quality and good taste — just the perfect combination. My family has been using it for over a year!"</p>
+            <div class="review-tag">Family Choice</div>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#e65100,#bf360c)">RK</div>
+              <div class="reviewer-info"><strong>Rajesh Kumar</strong><span>Google Review</span></div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">"Absolutely pure quality. My family has been using since one year. Can clearly taste the difference from commercial brands. Highly recommended for anyone looking for real natural honey!"</p>
+            <div class="review-tag">Highly Recommended</div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn">&#8249;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal-up">Our Process</div>
+        <h2 class="section-title reveal-up">From Flower to<br/><span class="gradient-text">Your Table</span></h2>
+      </div>
+      <div class="process-timeline">
+        <div class="process-line-vertical"></div>
+        <div class="process-step reveal-up">
+          <div class="process-num">01</div>
+          <div class="process-icon">🌸</div>
+          <div class="process-content">
+            <h3>Bees Collect Nectar</h3>
+            <p>Our bees forage on wildflowers, mustard blooms and lychee orchards across Bihar's pristine landscapes.</p>
+          </div>
+        </div>
+        <div class="process-step reveal-up step-right">
+          <div class="process-num">02</div>
+          <div class="process-icon">🐝</div>
+          <div class="process-content">
+            <h3>Natural Ripening</h3>
+            <p>Bees naturally dehydrate and ripen nectar in the hive, concentrating all natural goodness.</p>
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-num">03</div>
+          <div class="process-icon">🍯</div>
+          <div class="process-content">
+            <h3>Cold Extraction</h3>
+            <p>We gently cold-extract honey to preserve all enzymes, pollen and antioxidants intact.</p>
+          </div>
+        </div>
+        <div class="process-step reveal-up step-right">
+          <div class="process-num">04</div>
+          <div class="process-icon">📦</div>
+          <div class="process-content">
+            <h3>Direct to You</h3>
+            <p>Honey is bottled immediately and delivered directly — no warehouse, no delays.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta-banner">
+    <div class="container">
+      <div class="cta-content reveal-up">
+        <h2>Ready to taste the difference?</h2>
+        <p class="cta-hindi">असली शहद का स्वाद अनुभव करें</p>
+        <p>Call us or visit at Mustafapur, Patna, Bihar</p>
+        <div class="cta-actions">
+          <a href="tel:09939055989" class="btn-primary large">Call: 099390 55989</a>
+          <a href="https://maps.app.goo.gl/XKAUs6msbbeqZQcT8" target="_blank" class="btn-secondary large">Get Directions</a>
+        </div>
+        <div class="cta-hours">Open: 9 AM onwards · Every Day</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-badge reveal-up">Find Us</div>
+          <h2 class="section-title reveal-up">Visit Us or<br/><span class="gradient-text">Place an Order</span></h2>
+          <div class="contact-details reveal-up">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div><strong>Address</strong><p>Natural Honey, Bahpura - Bihta Rd,<br/>Mustafapur, Patna, Bihar 801111</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div><strong>Phone</strong><p><a href="tel:09939055989">099390 55989</a></p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🕐</div>
+              <div><strong>Hours</strong><p>Opens 9:00 AM Daily</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">♀</div>
+              <div><strong>Business</strong><p>Women-Owned Honey Farm</p></div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/XKAUs6msbbeqZQcT8" target="_blank" class="btn-primary reveal-up" style="margin-top:2rem">Open in Google Maps</a>
+        </div>
+        <div class="contact-map reveal-up">
+          <div class="map-embed-wrap">
+            <iframe src="https://www.google.com/maps?q=Mustafapur+Patna+Bihar+Natural+Honey&output=embed" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" title="Natural Honey Location"></iframe>
+            <div class="map-overlay-card">
+              <div><strong>Natural Honey</strong></div>
+              <div>4.8 ★ · 142 Reviews</div>
+              <div>Mustafapur, Patna</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-honey-drip" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 Q60,0 120,40 Q180,80 240,40 Q300,0 360,40 Q420,80 480,40 Q540,0 600,40 Q660,80 720,40 Q780,0 840,40 Q900,80 960,40 Q1020,0 1080,40 Q1140,80 1200,40 Q1260,0 1320,40 Q1380,80 1440,40 L1440,80 Z" fill="#111"/>
+      </svg>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Natural Honey</div>
+        <p class="footer-tagline">नेचुरल हनी — Pure, Raw and Real</p>
+        <p>Mustafapur, Patna, Bihar 801111</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><a href="tel:09939055989">099390 55989</a></p>
+        <p>Opens 9:00 AM Daily</p>
+        <p>Women-Owned Business</p>
+        <p>4.8 Stars · 142 Google Reviews</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2025 Natural Honey · Mustafapur, Patna, Bihar · All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8679;</button>
+
+  <script src="app.js"></script>
+</body>
+</html>

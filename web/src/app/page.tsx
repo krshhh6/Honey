@@ -10,7 +10,7 @@ import HoneyStorySection from '@/components/HoneyStorySection';
 import ShopByCollection from '@/components/ShopByCollection';
 import VideoBannerSection from '@/components/VideoBannerSection';
 import GallerySection from '@/components/GallerySection';
-
+import CircularText from '@/components/ui/CircularText';
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Assets
@@ -59,11 +59,12 @@ export default function HomePage() {
       {/* ── TOP NAVBAR ─────────────────────────────────────────────────── */}
       <Navbar />
 
+
       {/* ── HERO SECTION ───────────────────────────────────────────────── */}
       <div id="home" className="hero">
 
         {/* LEFT — text */}
-        <div className="hero__text">
+        <div className="hero__text" style={{ position: 'relative' }}>
 
           <motion.p className="label"
             initial="hidden" animate="visible" variants={fadeUp} custom={0.4}>
@@ -85,6 +86,27 @@ export default function HomePage() {
             ))}
           </h1>
 
+          {/* Honey Pot Illustration Overlay at pink annotation location */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.85 }}
+            style={{
+              position: 'absolute',
+              bottom: '-60px',
+              left: '-10px',
+              width: 'clamp(90px, 11vw, 150px)',
+              pointerEvents: 'none',
+              zIndex: 25,
+            }}
+          >
+            <img
+              src="/honey-pot-illustration.png"
+              alt="Hand-drawn honey pot illustration"
+              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 6px 12px rgba(217, 119, 6, 0.16))' }}
+            />
+          </motion.div>
+
         </div>
 
         {/* RIGHT — jar + Group 1 Jar Bees */}
@@ -96,6 +118,21 @@ export default function HomePage() {
             <img src={imgJar}
               alt="Meadlight Raw Honey — Pure · Natural · Unfiltered, Product of Italy" />
             <JarBees jarRef={jarRef} />
+
+            {/* Circular Text Badge at pink annotation */}
+            <div style={{
+              position: 'absolute',
+              bottom: '-15px',
+              right: '-25px',
+              zIndex: 25,
+              pointerEvents: 'auto',
+            }}>
+              <CircularText
+                text="NATURAL*BEE*FARM*"
+                spinDuration={20}
+                onHover="goBonkers"
+              />
+            </div>
           </div>
         </motion.div>
 
