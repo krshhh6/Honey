@@ -51,24 +51,24 @@
   pointer-events: none;
 }
 
-/* Arched "MEADLIGHT" Title */
+/* Arched "NATURAL BEE FARM" Title */
 .archedTitle {
   font-family: 'Jaro', 'Arial Black', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 72px;
+  font-size: 52px;
   font-weight: 800;
   fill: #1a1a1a;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Cursive "Fermented Honey Drink" Subtitle */
+/* "MOTHER OWNED" Subtitle */
 .scriptSubtitle {
   font-family: 'Irish Grover', 'Dancing Script', cursive;
-  font-size: 46px;
+  font-size: 42px;
   font-weight: 400;
   fill: #1a1a1a;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
 /* Bottom Tagline */
@@ -84,10 +84,10 @@
 
 @media (max-width: 640px) {
   .archedTitle {
-    font-size: 56px;
+    font-size: 38px;
   }
   .scriptSubtitle {
-    font-size: 36px;
+    font-size: 30px;
   }
   .tagline {
     font-size: 13px;

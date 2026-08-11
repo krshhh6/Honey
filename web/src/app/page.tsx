@@ -131,6 +131,22 @@ export default function HomePage() {
           >
             100% Pure &amp; Authentic Honey
           </motion.p>
+
+          {/* Honey pot illustration (Desktop view) */}
+          <motion.div
+            className="hero__pot hero__pot-desktop"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.95 }}
+          >
+            <Image
+              src="/honey-pot.png"
+              alt="Honey pot illustration"
+              width={160}
+              height={180}
+              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 8px 16px rgba(180,100,0,0.18))' }}
+            />
+          </motion.div>
         </div>
 
         {/* ── RIGHT COLUMN — honey jar ───────────────────────────────── */}
@@ -151,15 +167,8 @@ export default function HomePage() {
                 priority
               />
 
-              {/* Circular spinning text badge */}
-              <div style={{
-                position: 'absolute',
-                bottom: '-12px',
-                right: '-16px',
-                zIndex: 25,
-                transform: 'scale(0.85)',
-                transformOrigin: 'bottom right',
-              }}>
+              {/* Circular spinning text badge (Desktop view only, hidden on mobile) */}
+              <div className="hero__circular-badge">
                 <CircularText
                   text="NATURAL*BEE*FARM*"
                   spinDuration={20}
@@ -169,7 +178,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Shop now row with Honey Pot beside Shop now button at pink/orange annotation */}
+          {/* Shop now row */}
           <div className="hero__shop-row">
             <motion.a
               href="#collections"
@@ -183,9 +192,9 @@ export default function HomePage() {
               Shop now
             </motion.a>
 
-            {/* Honey pot illustration beside Shop now button */}
+            {/* Honey pot illustration (Mobile view only, to the right of Shop button) */}
             <motion.div
-              className="hero__pot"
+              className="hero__pot hero__pot-mobile"
               initial={{ opacity: 0, scale: 0.8, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.85 }}

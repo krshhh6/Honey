@@ -54,16 +54,16 @@ export default function FrontLandingLogo({
             />
           </defs>
 
-          {/* Arched "MEADLIGHT" Header */}
+          {/* Arched "NATURAL BEE FARM" Header */}
           <text className={styles.archedTitle}>
             <textPath href="#titleArchCurve" startOffset="50%" textAnchor="middle">
-              MEADLIGHT
+              NATURAL BEE FARM
             </textPath>
           </text>
 
-          {/* Cursive Subtitle "Fermented Honey Drink" */}
+          {/* Subtitle "MOTHER OWNED" */}
           <text x="400" y="295" textAnchor="middle" className={styles.scriptSubtitle}>
-            Fermented Honey Drink
+            MOTHER OWNED
           </text>
         </motion.svg>
       </div>
