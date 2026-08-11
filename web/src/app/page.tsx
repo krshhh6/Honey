@@ -2,22 +2,15 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import gsap from 'gsap';
 import Navbar from '@/components/Navbar';
 import SplashLoader from '@/components/SplashLoader';
-import JarBees from '@/components/JarBees';
 import HoneyStorySection from '@/components/HoneyStorySection';
 import ShopByCollection from '@/components/ShopByCollection';
 import VideoBannerSection from '@/components/VideoBannerSection';
 import GallerySection from '@/components/GallerySection';
 import CircularText from '@/components/ui/CircularText';
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Assets
-   ═══════════════════════════════════════════════════════════════════════════ */
-const imgJar      = '/lol.png';
-const imgFlower   = 'https://www.figma.com/api/mcp/asset/5907b0b0-86b9-41cf-ba88-52caa3a823ca.png';
-const imgSquiggle = 'https://www.figma.com/api/mcp/asset/fc948c7d-49ad-4502-b326-721f149a9c0b.svg';
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Framer Motion variants
@@ -30,12 +23,20 @@ const fadeUp = {
   }),
 };
 
+const fadeIn = {
+  hidden:  { opacity: 0 },
+  visible: (d = 0) => ({
+    opacity: 1,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const, delay: d },
+  }),
+};
+
 /* ═══════════════════════════════════════════════════════════════════════════
    Page
    ═══════════════════════════════════════════════════════════════════════════ */
 export default function HomePage() {
   const [showSplash, setShowSplash] = useState(true);
-  const jarRef  = useRef<HTMLDivElement>(null);
+  const jarRef = useRef<HTMLDivElement>(null);
 
   /* Jar — gentle perpetual float */
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function HomePage() {
   return (
     <div className="page">
 
-      {/* ── ANIMATED SPLASH PRELOADER PAGE ───────────────────────────────── */}
+      {/* ── ANIMATED SPLASH PRELOADER ─────────────────────────────────── */}
       <AnimatePresence>
         {showSplash && (
           <SplashLoader onComplete={() => setShowSplash(false)} />
@@ -59,108 +60,173 @@ export default function HomePage() {
       {/* ── TOP NAVBAR ─────────────────────────────────────────────────── */}
       <Navbar />
 
+      {/* ══════════════════════════════════════════════════════════════════
+          HERO SECTION — Figma design layout
+          ══════════════════════════════════════════════════════════════════ */}
+      <section id="home" className="hero">
 
-      {/* ── HERO SECTION ───────────────────────────────────────────────── */}
-      <div id="home" className="hero">
+        {/* ── Honey drip — full-bleed at top ─────────────────────────── */}
+        <motion.div
+          className="hero__drip"
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        >
+          <Image
+            src="/honey-drip.png"
+            alt=""
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'top center' }}
+            priority
+            aria-hidden="true"
+          />
+        </motion.div>
 
-        {/* LEFT — text */}
-        <div className="hero__text" style={{ position: 'relative' }}>
+        {/* ── LEFT COLUMN — bee + headline ───────────────────────────── */}
+        <div className="hero__left">
 
-          <motion.p className="label"
-            initial="hidden" animate="visible" variants={fadeUp} custom={0.4}>
-            The Brand{'\n'}New Drink
-          </motion.p>
-
-          <motion.div className="squiggle"
-            initial="hidden" animate="visible" variants={fadeUp} custom={0.55}>
-            <img src={imgSquiggle} alt="" aria-hidden="true" />
+          {/* Bee illustration */}
+          <motion.div
+            className="hero__bee"
+            initial={{ opacity: 0, x: -30, rotate: -10 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <Image
+              src="/hero-bee.png"
+              alt="Honey bee illustration"
+              width={120}
+              height={90}
+              style={{ width: '100%', height: 'auto' }}
+            />
           </motion.div>
 
-          <h1 className="headline">
-            {(['Principio is', 'a fermented', 'HONEY drink'] as const).map((line, i) => (
-              <motion.span key={line} className="headline__line"
-                initial="hidden" animate="visible" variants={fadeUp}
-                custom={0.65 + i * 0.12}>
+          {/* Main headline */}
+          <h1 className="hero__headline">
+            {(['NATURAL', 'BEE FARM', 'NATURAL HONEY'] as const).map((line, i) => (
+              <motion.span
+                key={line}
+                className="hero__headline-line"
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                custom={0.45 + i * 0.14}
+              >
                 {line}
               </motion.span>
             ))}
           </h1>
 
-          {/* Honey Pot Illustration Overlay at pink annotation location */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.85 }}
-            style={{
-              position: 'absolute',
-              bottom: '-60px',
-              left: '-10px',
-              width: 'clamp(90px, 11vw, 150px)',
-              pointerEvents: 'none',
-              zIndex: 25,
-            }}
+          {/* Subtext */}
+          <motion.p
+            className="hero__subtext"
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={0.85}
           >
-            <img
-              src="/honey-pot-illustration.png"
-              alt="Hand-drawn honey pot illustration"
-              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 6px 12px rgba(217, 119, 6, 0.16))' }}
+            100% Pure &amp; Authentic Honey
+          </motion.p>
+
+          {/* Honey pot illustration (bottom-left of text) */}
+          <motion.div
+            className="hero__pot"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.95 }}
+          >
+            <Image
+              src="/honey-pot.png"
+              alt="Honey pot illustration"
+              width={160}
+              height={180}
+              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 8px 16px rgba(180,100,0,0.18))' }}
             />
           </motion.div>
-
         </div>
 
-        {/* RIGHT — jar + Group 1 Jar Bees */}
-        <motion.div className="hero__jar"
-          initial={{ opacity: 0, y: 40, scale: 0.94 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}>
-          <div ref={jarRef} style={{ position: 'relative' }}>
-            <img src={imgJar}
-              alt="Meadlight Raw Honey — Pure · Natural · Unfiltered, Product of Italy" />
-            <JarBees jarRef={jarRef} />
-
-            {/* Circular Text Badge at pink annotation */}
-            <div style={{
-              position: 'absolute',
-              bottom: '-15px',
-              right: '-25px',
-              zIndex: 25,
-              pointerEvents: 'auto',
-            }}>
-              <CircularText
-                text="NATURAL*BEE*FARM*"
-                spinDuration={20}
-                onHover="goBonkers"
+        {/* ── RIGHT COLUMN — honey jar ───────────────────────────────── */}
+        <div className="hero__right">
+          <motion.div
+            className="hero__jar-wrap"
+            initial={{ opacity: 0, y: 40, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          >
+            <div ref={jarRef} style={{ position: 'relative' }}>
+              <Image
+                src="/honey-jar.png"
+                alt="Natural Bee Farm Raw Honey Jar — Pure · Natural · Unfiltered"
+                width={420}
+                height={560}
+                style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 24px 48px rgba(160,80,0,0.22))' }}
+                priority
               />
+
+              {/* Circular spinning text badge */}
+              <div style={{
+                position: 'absolute',
+                bottom: '-20px',
+                right: '-30px',
+                zIndex: 25,
+              }}>
+                <CircularText
+                  text="NATURAL*BEE*FARM*"
+                  spinDuration={20}
+                  onHover="goBonkers"
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Shop now button */}
+          <motion.a
+            href="#collections"
+            className="hero__shop-btn"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Shop now
+          </motion.a>
+        </div>
+
+        {/* ── RIGHT EDGE — flower decoration ─────────────────────────── */}
+        <motion.div
+          className="hero__flower"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          custom={0.8}
+          aria-hidden="true"
+        >
+          <Image
+            src="/hero-flower.png"
+            alt=""
+            width={180}
+            height={340}
+            style={{ width: '100%', height: 'auto', opacity: 0.75 }}
+          />
         </motion.div>
 
-      </div>
+      </section>
 
-      {/* ── FLOWER — bottom-right decoration ────────────────────────────── */}
-      <motion.div className="hero__flower"
-        initial={{ opacity: 0, x: 24 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-        aria-hidden="true">
-        <img src={imgFlower} alt="" draggable={false} />
-      </motion.div>
-
-      {/* ── HARVEST STORY SECTION ────────────────────────────────────────── */}
+      {/* ── HARVEST STORY SECTION ──────────────────────────────────────────── */}
       <div id="story">
         <HoneyStorySection />
       </div>
 
-      {/* ── SHOP BY COLLECTION SECTION ───────────────────────────────────── */}
+      {/* ── SHOP BY COLLECTION SECTION ────────────────────────────────────── */}
       <div id="collections">
         <ShopByCollection />
       </div>
 
-      {/* ── VIDEO BANNER SECTION ────────────────────────────────────────── */}
+      {/* ── VIDEO BANNER SECTION ──────────────────────────────────────────── */}
       <VideoBannerSection />
 
-      {/* ── OUR GALLERY SECTION ─────────────────────────────────────────── */}
+      {/* ── OUR GALLERY SECTION ───────────────────────────────────────────── */}
       <div id="gallery">
         <GallerySection />
       </div>

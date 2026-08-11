@@ -59,7 +59,7 @@ img { display: block; max-width: 100%; }
 .nav__pill:hover { opacity: 0.85; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HERO LAYOUT — two-column: text left | jar right
+   HERO — Figma Design Layout
    ═══════════════════════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
@@ -68,8 +68,9 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 3% 0 7%;
-  gap: 3%;                   /* small comfortable gap between text and jar */
+  padding: 0 4% 0 6%;
+  gap: 2%;
+  overflow: hidden;
   background-image: url('/paper-texture-bg.jpg');
   background-size: cover;
   background-position: center center;
@@ -77,114 +78,141 @@ img { display: block; max-width: 100%; }
   isolation: isolate;
 }
 
-/* warm cream tint so texture is visible but still on-brand */
+/* Warm cream tint over paper texture */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(253, 240, 238, 0.42);
+  background-color: rgba(252, 238, 196, 0.38);
   z-index: 0;
   pointer-events: none;
 }
 
-/* ensure all direct hero children sit above the tint */
+/* All direct children above tint */
 .hero > * {
   position: relative;
   z-index: 1;
 }
 
-/* ── Left: text block ──────────────────────────────────────────────────────*/
-.hero__text {
+/* ── Honey drip — full-width top overlay ─────────────────────────────────── */
+.hero__drip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(120px, 18vw, 240px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Left column ─────────────────────────────────────────────────────────── */
+.hero__left {
   flex: 0 0 auto;
+  width: clamp(280px, 38vw, 520px);
   display: flex;
   flex-direction: column;
-  gap: 0;
-  z-index: 20;
-  margin-top: -2vh;
+  position: relative;
+  padding-top: 80px;
+  z-index: 5;
 }
 
-/* "The Brand New Drink" */
-.label {
-  font-family: 'Irish Grover', cursive;
-  font-size: clamp(13px, 1.2vw, 18px);
-  font-weight: 400;
-  color: #1a1a1a;
-  line-height: 1.2;
-  transform: rotate(-8deg) translateX(-4px);
-  transform-origin: left center;
-  margin-bottom: 8px;
-  white-space: nowrap;
+/* Bee illustration */
+.hero__bee {
+  width: clamp(80px, 9vw, 130px);
+  margin-bottom: 12px;
+  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.15));
 }
 
-/* Squiggle */
-.squiggle {
-  width: clamp(120px, 13vw, 220px);
-  overflow: visible;
-  margin-bottom: 6px;
-}
-.squiggle img { width: 100%; height: auto; }
-
-/* Headline */
-.headline {
+/* Main yellow headline */
+.hero__headline {
   display: flex;
   flex-direction: column;
   line-height: 1.0;
+  margin: 0;
 }
 
-.headline__line {
+.hero__headline-line {
   display: block;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: clamp(32px, 4.2vw, 76px);
+  font-size: clamp(36px, 5.2vw, 82px);
   font-weight: 400;
-  color: #FFC300;
-  -webkit-text-fill-color: #FFC300;
-  text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.18);
+  color: #E8A800;
+  text-shadow: 3px 4px 0px rgba(0,0,0,0.14);
   letter-spacing: -0.01em;
   line-height: 1.0;
 }
 
-/* ── Right: jar ────────────────────────────────────────────────────────── */
-.hero__jar {
-  flex: 0 0 auto;
-  z-index: 15;
-  width: clamp(180px, 20vw, 360px);
-  margin-bottom: -2vh;
-}
-.hero__jar img {
-  width: 100%;
-  height: auto;
-  /* remove white bg with mix-blend-mode — jar has white bg so we multiply */
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 24px 48px rgba(160, 80, 0, 0.16));
+/* Italic subtext */
+.hero__subtext {
+  font-family: 'Irish Grover', cursive;
+  font-size: clamp(14px, 1.4vw, 20px);
+  color: #5a3a00;
+  font-style: italic;
+  margin-top: 10px;
+  transform: rotate(-4deg) translateX(4px);
+  transform-origin: left center;
 }
 
-/* ── Side PNG illustration — pinned to far right edge ────────────────────── */
-.hero__side {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-  width: clamp(260px, 28vw, 480px);
+/* Honey pot illustration */
+.hero__pot {
+  width: clamp(100px, 12vw, 170px);
+  margin-top: 24px;
   pointer-events: none;
-  opacity: 0.85;
 }
-.hero__side img { width: 100%; height: auto; display: block; }
 
-/* ── Flower — pinned to right edge ─────────────────────────────────────── */
+/* ── Right column ────────────────────────────────────────────────────────── */
+.hero__right {
+  flex: 0 0 auto;
+  width: clamp(240px, 28vw, 420px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  z-index: 5;
+  padding-top: 60px;
+}
+
+.hero__jar-wrap {
+  width: 100%;
+}
+
+/* Shop now button */
+.hero__shop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background: #f3b233;
+  color: #1a1a1a;
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(243, 178, 51, 0.4);
+  transition: box-shadow 0.2s ease;
+  align-self: flex-end;
+  margin-right: 8px;
+}
+.hero__shop-btn:hover {
+  box-shadow: 0 6px 20px rgba(243, 178, 51, 0.55);
+}
+
+/* ── Flower — far right edge ─────────────────────────────────────────────── */
 .hero__flower {
   position: absolute;
   right: 0;
   bottom: 0;
-  z-index: 10;
-  width: clamp(100px, 12vw, 220px);
+  z-index: 4;
+  width: clamp(100px, 11vw, 200px);
   pointer-events: none;
-  opacity: 0.85;
 }
-.hero__flower img { width: 100%; height: auto; }
 
-/* .hero__bee — fully controlled by GSAP in page.tsx, no static CSS needed */
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
