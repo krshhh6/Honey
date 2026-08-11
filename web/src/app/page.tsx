@@ -65,19 +65,23 @@ export default function HomePage() {
           ══════════════════════════════════════════════════════════════════ */}
       <section id="home" className="hero">
 
-        {/* ── Honey drip — full-bleed at top ─────────────────────────── */}
+        {/* ── Honey drip — full uncropped Image 4 at top ──────────────── */}
         <motion.div
           className="hero__drip"
-          initial={{ opacity: 0, y: -40 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
-          <Image
+          <img
             src="/honey-drip.png"
             alt=""
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'top center' }}
-            priority
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              objectPosition: 'top center',
+              display: 'block',
+            }}
             aria-hidden="true"
           />
         </motion.div>
@@ -166,9 +170,11 @@ export default function HomePage() {
               {/* Circular spinning text badge */}
               <div style={{
                 position: 'absolute',
-                bottom: '-20px',
-                right: '-30px',
+                bottom: '-12px',
+                right: '-16px',
                 zIndex: 25,
+                transform: 'scale(0.85)',
+                transformOrigin: 'bottom right',
               }}>
                 <CircularText
                   text="NATURAL*BEE*FARM*"

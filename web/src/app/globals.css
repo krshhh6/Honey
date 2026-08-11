@@ -59,7 +59,7 @@ img { display: block; max-width: 100%; }
 .nav__pill:hover { opacity: 0.85; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HERO — Figma Design Layout
+   HERO — Figma Design Layout (Optimized Compact Sizing)
    ═══════════════════════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
@@ -68,8 +68,8 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4% 0 6%;
-  gap: 2%;
+  padding: 70px 6% 20px 8%;
+  gap: 4%;
   overflow: hidden;
   background-image: url('/paper-texture-bg.jpg');
   background-size: cover;
@@ -94,41 +94,41 @@ img { display: block; max-width: 100%; }
   z-index: 1;
 }
 
-/* ── Honey drip — full-width top overlay ─────────────────────────────────── */
+/* ── Honey drip — full image 4 (much smaller & uncropped) ──────────────── */
 .hero__drip {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  height: clamp(120px, 18vw, 240px);
+  height: clamp(45px, 5vw, 75px);
   pointer-events: none;
-  z-index: 10;
+  z-index: 50;
+  filter: drop-shadow(0 6px 14px rgba(217, 119, 6, 0.22));
 }
 
 /* ── Left column ─────────────────────────────────────────────────────────── */
 .hero__left {
   flex: 0 0 auto;
-  width: clamp(280px, 38vw, 520px);
+  width: clamp(260px, 34vw, 440px);
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 80px;
   z-index: 5;
 }
 
 /* Bee illustration */
 .hero__bee {
-  width: clamp(80px, 9vw, 130px);
-  margin-bottom: 12px;
-  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.15));
+  width: clamp(50px, 6vw, 85px);
+  margin-bottom: 8px;
+  filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.12));
 }
 
 /* Main yellow headline */
 .hero__headline {
   display: flex;
   flex-direction: column;
-  line-height: 1.0;
+  line-height: 0.96;
   margin: 0;
 }
 
@@ -136,42 +136,41 @@ img { display: block; max-width: 100%; }
   display: block;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: clamp(36px, 5.2vw, 82px);
+  font-size: clamp(26px, 3.4vw, 54px);
   font-weight: 400;
   color: #E8A800;
-  text-shadow: 3px 4px 0px rgba(0,0,0,0.14);
+  text-shadow: 2px 3px 0px rgba(0,0,0,0.12);
   letter-spacing: -0.01em;
-  line-height: 1.0;
+  line-height: 0.98;
 }
 
 /* Italic subtext */
 .hero__subtext {
   font-family: 'Irish Grover', cursive;
-  font-size: clamp(14px, 1.4vw, 20px);
+  font-size: clamp(12px, 1.1vw, 17px);
   color: #5a3a00;
   font-style: italic;
-  margin-top: 10px;
-  transform: rotate(-4deg) translateX(4px);
+  margin-top: 8px;
+  transform: rotate(-3deg) translateX(2px);
   transform-origin: left center;
 }
 
 /* Honey pot illustration */
 .hero__pot {
-  width: clamp(100px, 12vw, 170px);
-  margin-top: 24px;
+  width: clamp(75px, 8vw, 115px);
+  margin-top: 14px;
   pointer-events: none;
 }
 
 /* ── Right column ────────────────────────────────────────────────────────── */
 .hero__right {
   flex: 0 0 auto;
-  width: clamp(240px, 28vw, 420px);
+  width: clamp(180px, 19vw, 290px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   z-index: 5;
-  padding-top: 60px;
 }
 
 .hero__jar-wrap {
@@ -183,24 +182,24 @@ img { display: block; max-width: 100%; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
+  padding: 9px 26px;
   background: #f3b233;
   color: #1a1a1a;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.05em;
-  border-radius: 10px;
+  border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(243, 178, 51, 0.4);
+  box-shadow: 0 4px 12px rgba(243, 178, 51, 0.35);
   transition: box-shadow 0.2s ease;
   align-self: flex-end;
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .hero__shop-btn:hover {
-  box-shadow: 0 6px 20px rgba(243, 178, 51, 0.55);
+  box-shadow: 0 6px 18px rgba(243, 178, 51, 0.5);
 }
 
 /* ── Flower — far right edge ─────────────────────────────────────────────── */
@@ -209,7 +208,7 @@ img { display: block; max-width: 100%; }
   right: 0;
   bottom: 0;
   z-index: 4;
-  width: clamp(100px, 11vw, 200px);
+  width: clamp(80px, 9vw, 160px);
   pointer-events: none;
 }
 
