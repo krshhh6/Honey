@@ -64,7 +64,7 @@ export default function StoryBlock({
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
@@ -73,7 +73,7 @@ export default function StoryBlock({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.12 },
+      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const, delay: 0.12 },
     },
   };
 
