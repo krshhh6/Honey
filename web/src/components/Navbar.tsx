@@ -177,11 +177,18 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="/about"
+              className={styles.mobileNavLink}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ABOUT US
+            </a>
             <motion.a
               href="#collections"
               onClick={(e) => handleNavClick(e, '#collections')}
               className={styles.aboutPill}
-              style={{ marginTop: '16px', width: '80%', textAlign: 'center' }}
+              style={{ marginTop: '16px', display: 'inline-flex', width: '80%', textAlign: 'center' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

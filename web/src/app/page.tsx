@@ -131,22 +131,6 @@ export default function HomePage() {
           >
             100% Pure &amp; Authentic Honey
           </motion.p>
-
-          {/* Honey pot illustration (bottom-left of text) */}
-          <motion.div
-            className="hero__pot"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.95 }}
-          >
-            <Image
-              src="/honey-pot.png"
-              alt="Honey pot illustration"
-              width={160}
-              height={180}
-              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 8px 16px rgba(180,100,0,0.18))' }}
-            />
-          </motion.div>
         </div>
 
         {/* ── RIGHT COLUMN — honey jar ───────────────────────────────── */}
@@ -185,18 +169,36 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Shop now button */}
-          <motion.a
-            href="#collections"
-            className="hero__shop-btn"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Shop now
-          </motion.a>
+          {/* Shop now row with Honey Pot beside Shop now button at pink/orange annotation */}
+          <div className="hero__shop-row">
+            <motion.a
+              href="#collections"
+              className="hero__shop-btn"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Shop now
+            </motion.a>
+
+            {/* Honey pot illustration beside Shop now button */}
+            <motion.div
+              className="hero__pot"
+              initial={{ opacity: 0, scale: 0.8, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.85 }}
+            >
+              <Image
+                src="/honey-pot.png"
+                alt="Honey pot illustration"
+                width={120}
+                height={130}
+                style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 6px 12px rgba(180,100,0,0.18))' }}
+              />
+            </motion.div>
+          </div>
         </div>
 
         {/* ── RIGHT EDGE — flower decoration ─────────────────────────── */}
