@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLOBAL SHARED FOOTER COMPONENT STYLES
+   Exact hex #282828, 4-column data grid, white beehive logo mark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.footerSection {
+  position: relative;
+  width: 100%;
+  background-color: #282828; /* Exact dark charcoal hex from reference */
+  color: #ffffff;
+  margin-top: 80px; /* Consistent 80–100px gap from preceding section */
+  border-radius: 0 !important; /* Sharp corners, no rounded border */
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1190px;
+  margin: 0 auto;
+  padding: 60px 48px; /* 60px top/bottom, inheriting 48px site container inset */
+}
+
+/* 4 Equal-Width Columns Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-family: 'Jaro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+/* List Items & Links */
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkItem {
+  margin: 0;
+  line-height: 2.0; /* Comfortable vertical spacing */
+}
+
+.link {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #e5e5e5;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.underlined {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Contact Info Styling */
+.contactBlock {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #e5e5e5;
+}
+
+.addressLine {
+  margin: 0 0 4px 0;
+  color: #e5e5e5;
+}
+
+.contactLink {
+  display: block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  line-height: 2.0;
+  transition: opacity 0.2s ease;
+}
+
+.contactLink:hover {
+  opacity: 0.85;
+}
+
+/* Logo Mark Below Column 1 */
+.logoWrapper {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logoImage {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+/* ── Responsive Breakpoints ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 48px 24px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .linkItem,
+  .contactLink {
+    line-height: 2.2; /* Extra tap target room on mobile */
+  }
+  .logoWrapper {
+    margin-top: 40px;
+  }
+}

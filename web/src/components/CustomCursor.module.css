@@ -1,0 +1,25 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CUSTOM SECONDARY TRAILING ORANGE/YELLOW DOT CURSOR STYLES
+   Subtle secondary visual dot layer — default system cursor stays fully active
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.orangeDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #f5b400;
+  border-radius: 50%;
+  pointer-events: none !important;
+  z-index: 9999;
+  box-shadow: 0 0 8px rgba(245, 180, 0, 0.65), 0 0 16px rgba(245, 180, 0, 0.3);
+  will-change: transform, opacity;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  .orangeDot {
+    display: none !important;
+  }
+}

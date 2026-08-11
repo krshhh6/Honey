@@ -1,0 +1,255 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIFECYCLE & ECOSYSTEM TERRACOTTA SECTIONS STYLES
+   Tight, precise alignment & compact proportions
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.terracottaSection1 {
+  position: relative;
+  width: 100%;
+  padding: 100px 60px 80px 60px;
+  background-color: #9c4242; /* Deep red section background from reference */
+  color: #ffffff;
+  margin-bottom: 80px; /* White separation gap between sections matching reference screenshot */
+  border: none;
+}
+
+.terracottaSection2 {
+  position: relative;
+  width: 100%;
+  padding: 100px 60px 80px 60px;
+  background-color: #b24d3e; /* Lighter terracotta section background from reference */
+  color: #ffffff;
+  margin-bottom: 80px;
+  border: none;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0; /* Aligned identically to container edge */
+}
+
+/* Header & Subtext Spacing */
+.header {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(40px, 3.8vw, 52px); /* Proportional 48–56px scale */
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(16px, 1.2vw, 18px); /* 16–18px font size */
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8); /* 80% white opacity */
+  margin: 10px 0 0 0; /* 8–12px margin-top below heading */
+}
+
+/* Icon Row: 6 Equal Columns */
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px; /* Equal gap between columns */
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 60px; /* Problem 2: Fixed 60px gap below subtext */
+}
+
+.iconCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.iconWrapper {
+  width: 68px; /* Increased icon size to 68px to match reference proportion */
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  transition: transform 0.25s ease;
+}
+
+.iconImage {
+  max-width: 68px;
+  max-height: 68px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.iconCard:hover .iconWrapper {
+  transform: translateY(-4px);
+}
+
+.iconLabel {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px; /* Problem 4: 14px font-size, 12px margin-top */
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.3;
+  margin: 12px 0 0 0;
+  text-align: center;
+  max-width: 160px;
+}
+
+/* ── Over 15+ Years Impact Section ───────────────────────────────────────── */
+.impactSection {
+  position: relative;
+  width: 100%;
+  padding: 90px 60px 100px 60px;
+  background-color: #fdf0ee;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.impactHeader {
+  max-width: 1000px;
+  margin-bottom: 48px;
+  text-align: left;
+}
+
+.impactTitle {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(36px, 3.8vw, 54px);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.impactSubtitle {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(16px, 1.2vw, 18px);
+  font-weight: 400;
+  color: #555555;
+  margin: 8px 0 0 0;
+}
+
+/* 3 Column Metric Cards Grid */
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metricBlock {
+  width: 100%;
+  height: clamp(260px, 26vw, 340px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  border-radius: 0 !important; /* Sharp square corners */
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.metricBlockBlue {
+  background-color: #207788;
+}
+
+.metricBlockGreen {
+  background-color: #278564;
+}
+
+.metricBlockTerracotta {
+  background-color: #aa5141;
+}
+
+.metricCard:hover .metricBlock {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.metricImage {
+  max-width: 82%;
+  max-height: 82%;
+  object-fit: contain;
+}
+
+.metricContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.metricNumber {
+  font-family: 'Jaro', sans-serif;
+  font-size: clamp(38px, 3.8vw, 54px);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.metricLabel {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #555555;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 220px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .terracottaSection {
+    padding: 70px 40px;
+  }
+  .impactSection {
+    padding: 70px 40px;
+  }
+  .iconGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 20px;
+  }
+  .metricGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .terracottaSection {
+    padding: 60px 24px;
+  }
+  .impactSection {
+    padding: 60px 24px;
+  }
+  .header {
+    margin-bottom: 40px;
+  }
+  .iconGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+}

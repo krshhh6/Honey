@@ -1,0 +1,49 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATED SPLASH INTRO STYLES (3 SEC INTRO)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.splashOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background-color: #fdf0ee; /* Warm cream background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Subtle radial honey glow behind the logo */
+.honeyGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(650px, 85vw);
+  height: min(650px, 85vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 204, 38, 0.35) 0%,
+    rgba(249, 178, 51, 0.15) 45%,
+    rgba(253, 240, 238, 0) 75%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}

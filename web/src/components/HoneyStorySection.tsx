@@ -193,7 +193,6 @@ export default function HoneyStorySection() {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const imageFrameRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const lineCardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const leafLeftRefs = useRef<(HTMLImageElement | null)[]>([]);
   const leafRightRefs = useRef<(HTMLImageElement | null)[]>([]);
 
@@ -288,7 +287,7 @@ export default function HoneyStorySection() {
         const imgFrameEl = imageFrameRefs.current[sIdx];
         if (imgFrameEl) {
           gsap.to(imgFrameEl, {
-            yPercent: -10,
+            yPercent: -8,
             ease: 'none',
             scrollTrigger: {
               trigger: secEl,
@@ -300,48 +299,13 @@ export default function HoneyStorySection() {
 
           gsap.to(imgFrameEl, {
             y: -10,
-            rotation: sIdx % 2 === 0 ? 1.2 : -1.2,
+            rotation: sIdx % 2 === 0 ? 0.8 : -0.8,
             duration: 3.8 + sIdx * 0.4,
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut',
           });
         }
-
-        // 4. Line-by-Line Cards Scroll Highlights & Micro Floating Loops
-        sec.lines.forEach((_, lIdx) => {
-          const cardKey = `${sIdx}-${lIdx}`;
-          const cardEl = lineCardRefs.current[cardKey];
-          if (!cardEl) return;
-
-          gsap.fromTo(
-            cardEl,
-            { opacity: 0.3, y: 25, scale: 0.98 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              ease: 'power2.out',
-              duration: 0.8,
-              scrollTrigger: {
-                trigger: cardEl,
-                start: 'top 82%',
-                end: 'top 50%',
-                scrub: 0.6,
-                toggleClass: { targets: cardEl, className: styles.storyLineCardActive },
-              },
-            }
-          );
-
-          gsap.to(cardEl, {
-            y: -5,
-            duration: 3.2 + lIdx * 0.5,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: lIdx * 0.25,
-          });
-        });
       });
     }, containerRef);
 
@@ -373,6 +337,20 @@ export default function HoneyStorySection() {
               </svg>
             </div>
           )}
+
+          {/* Vintage Background Accents: Honey Stick on Top-Left & Honey Pot on Bottom-Right */}
+          <img
+            src="/assets/story_00.png"
+            alt=""
+            className={styles.storyDipperLeft}
+            aria-hidden="true"
+          />
+          <img
+            src="/assets/story_01.png"
+            alt=""
+            className={styles.storyJarRight}
+            aria-hidden="true"
+          />
 
           {/* Side Leaves (Popping Animation) */}
           <img
@@ -416,9 +394,8 @@ export default function HoneyStorySection() {
               </div>
             </header>
 
-            {/* Grid: Image Frame & 3 Aligned Vertical Cards */}
-            <div className={`${styles.grid} ${sec.isReverse ? styles.gridReverse : ''}`}>
-              {/* Floating Image Frame with Slash Reveal */}
+            {/* Clean Centered Image Frame with Subheading */}
+            <div className={styles.imageFrameContainer}>
               <div
                 ref={(el) => { imageFrameRefs.current[sIdx] = el; }}
                 className={styles.imageFrame}
@@ -438,24 +415,6 @@ export default function HoneyStorySection() {
                     <span>{sec.imageCaption}</span>
                   </div>
                 </div>
-              </div>
-
-              {/* 3 Vertical Cards (Height Aligned with Image) */}
-              <div className={styles.storyLinesWrapper}>
-                {sec.lines.map((line, lIdx) => {
-                  const cardKey = `${sIdx}-${lIdx}`;
-                  return (
-                    <div
-                      key={line.id}
-                      ref={(el) => { lineCardRefs.current[cardKey] = el; }}
-                      className={styles.storyLineCard}
-                    >
-                      <div className={styles.stepCardCircle}>{line.stepNum}</div>
-                      <span className={styles.storyLineNumber}>{line.stepLabel}</span>
-                      <p className={styles.storyLineText}>{line.text}</p>
-                    </div>
-                  );
-                })}
               </div>
             </div>
           </div>
