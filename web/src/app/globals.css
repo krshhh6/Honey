@@ -59,17 +59,17 @@ img { display: block; max-width: 100%; }
 .nav__pill:hover { opacity: 0.85; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HERO — Figma Design Layout (Optimized Compact Sizing)
+   HERO — Figma Design Layout (Compact Sizing)
    ═══════════════════════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 70px 6% 20px 8%;
-  gap: 4%;
+  padding: 60px 4% 15px 4%;
   overflow: hidden;
   background-image: url('/paper-texture-bg.jpg');
   background-size: cover;
@@ -83,52 +83,59 @@ img { display: block; max-width: 100%; }
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(252, 238, 196, 0.38);
+  background-color: rgba(252, 238, 196, 0.35);
   z-index: 0;
   pointer-events: none;
 }
 
-/* All direct children above tint */
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Honey drip — full image 4 (much smaller & uncropped) ──────────────── */
-.hero__drip {
+/* ── Realistic Bee (Left) ─────────────────────────────────────────────── */
+.hero__bee-left {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: clamp(45px, 5vw, 75px);
+  top: 10%;
+  left: 6%;
+  width: clamp(55px, 6.5vw, 105px);
+  z-index: 35;
   pointer-events: none;
-  z-index: 50;
-  filter: drop-shadow(0 6px 14px rgba(217, 119, 6, 0.22));
+  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.15));
 }
 
-/* ── Left column ─────────────────────────────────────────────────────────── */
+/* ── Cartoon Bee (Right Top) ──────────────────────────────────────────── */
+.hero__bee-right {
+  position: absolute;
+  top: 7%;
+  right: 4%;
+  width: clamp(65px, 8vw, 130px);
+  z-index: 35;
+  pointer-events: none;
+  filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.12));
+}
+
+/* ── Main Layout Container ────────────────────────────────────────────── */
+.hero__container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+/* ── Left Column: Headline & Subtitle Badge ────────────────────────────── */
 .hero__left {
-  flex: 0 0 auto;
-  width: clamp(260px, 34vw, 440px);
+  flex: 0 1 42%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 5;
+  align-items: flex-start;
+  z-index: 12;
 }
 
-/* Bee illustration */
-.hero__bee {
-  width: clamp(50px, 6vw, 85px);
-  margin-bottom: 8px;
-  filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.12));
-}
-
-/* Main yellow headline */
 .hero__headline {
   display: flex;
   flex-direction: column;
-  line-height: 0.96;
+  line-height: 0.95;
   margin: 0;
 }
 
@@ -136,107 +143,133 @@ img { display: block; max-width: 100%; }
   display: block;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: clamp(26px, 3.4vw, 54px);
+  font-size: clamp(32px, 4.2vw, 72px);
   font-weight: 400;
-  color: #E8A800;
-  text-shadow: 2px 3px 0px rgba(0,0,0,0.12);
+  color: #FFC700;
+  background: linear-gradient(180deg, #FFF194 0%, #FFC700 35%, #E69A00 75%, #B86F00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 3px 5px rgba(120, 60, 0, 0.3)) drop-shadow(0px 2px 0px rgba(0, 0, 0, 0.22));
   letter-spacing: -0.01em;
-  line-height: 0.98;
+  line-height: 0.95;
+  white-space: nowrap;
 }
 
-/* Italic subtext */
-.hero__subtext {
-  font-family: 'Irish Grover', cursive;
+/* Subtitle Badge: 100% Pure & Authentic Honey */
+.hero__badge {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 18px;
+  border: 3px solid #EEC31B;
+  border-radius: 200px;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+  transform: rotate(-6deg);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.hero__badge-text {
+  font-family: 'Irish Grover', 'Jaro', cursive;
   font-size: clamp(12px, 1.1vw, 17px);
-  color: #5a3a00;
-  font-style: italic;
-  margin-top: 8px;
-  transform: rotate(-3deg) translateX(2px);
-  transform-origin: left center;
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-/* ── Right column ────────────────────────────────────────────────────────── */
-.hero__right {
-  flex: 0 0 auto;
-  width: clamp(180px, 19vw, 290px);
+/* ── Middle Column: Honey Pot ─────────────────────────────────────────── */
+.hero__center {
+  flex: 0 0 24%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  z-index: 5;
+  justify-content: center;
+  z-index: 15;
 }
 
-.hero__jar-wrap {
-  width: 100%;
-}
-
-/* Shop now row (Button directly under bottle + Honey Pot on the right) */
-.hero__shop-row {
+/* Action row for Shop Now button + Honey Pot */
+.hero__action-row {
+  margin-top: 16px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 14px;
-  margin-top: -12px;
-  position: relative;
-  z-index: 30;
+  gap: 16px;
 }
 
-/* Circular spinning text badge container */
-.hero__circular-badge {
-  position: absolute;
-  bottom: -12px;
-  right: -16px;
-  z-index: 25;
-  transform: scale(0.85);
-  transform-origin: bottom right;
-}
-
-/* Honey pot desktop vs mobile display */
-.hero__pot-desktop {
-  display: block;
-  width: clamp(75px, 8vw, 115px);
-  margin-top: 14px;
-  pointer-events: none;
-}
-
-.hero__pot-mobile {
-  display: none;
-}
-
-/* Shop now button */
 .hero__shop-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 24px;
-  background: #f3b233;
-  color: #1a1a1a;
+  width: clamp(130px, 12vw, 165px);
+  height: clamp(42px, 4vw, 56px);
+  background: #FFCC26;
+  border-radius: 9px;
   font-family: 'Jaro', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 16px;
+  font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 400;
-  letter-spacing: 0.05em;
-  border-radius: 8px;
+  color: #000000;
+  opacity: 0.9;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(243, 178, 51, 0.35);
-  transition: box-shadow 0.2s ease;
+  transform: rotate(-0.95deg);
+  box-shadow: 0 5px 14px rgba(255, 204, 38, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
-  align-self: flex-end;
-  margin-right: 4px;
-}
-.hero__shop-btn:hover {
-  box-shadow: 0 6px 18px rgba(243, 178, 51, 0.5);
 }
 
-/* ── Flower — far right edge ─────────────────────────────────────────────── */
+.hero__shop-btn:hover {
+  opacity: 1;
+  box-shadow: 0 7px 18px rgba(255, 204, 38, 0.55);
+}
+
+.hero__pot {
+  width: clamp(130px, 14vw, 205px);
+  pointer-events: none;
+}
+
+.hero__pot-desktop {
+  display: flex;
+}
+
+.hero__pot-mobile {
+  display: none !important;
+}
+
+/* ── Right Column: Raw Honey Jar ─────────────────────────────────────── */
+.hero__right {
+  flex: 0 1 34%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 12;
+}
+
+.hero__jar-wrap {
+  width: clamp(180px, 19vw, 290px);
+  position: relative;
+}
+
+.hero__circular-badge {
+  position: absolute;
+  bottom: -10px;
+  right: -16px;
+  z-index: 25;
+  transform: scale(0.72);
+  transform-origin: bottom right;
+}
+
+/* ── Background Flower line-art (Bottom Right) ───────────────────────── */
 .hero__flower {
   position: absolute;
   right: 0;
   bottom: 0;
   z-index: 4;
-  width: clamp(80px, 9vw, 160px);
+  width: clamp(80px, 9vw, 150px);
   pointer-events: none;
 }
 
@@ -244,95 +277,96 @@ img { display: block; max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE MOBILE STYLES
    ═══════════════════════════════════════════════════════════════════════════ */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .page {
     height: auto;
     min-height: 100svh;
   }
 
   .hero {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 75px 5% 36px 5%;
-    gap: 16px;
+    padding: 75px 5% 40px 5%;
     min-height: auto;
   }
 
-  .hero__drip {
-    height: clamp(35px, 8vw, 65px);
+  .hero__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .hero__bee-left {
+    top: 10%;
+    left: 4%;
+    width: 60px;
+  }
+
+  .hero__bee-right {
+    top: 8%;
+    right: 4%;
+    width: 75px;
   }
 
   .hero__left {
     width: 100%;
-    max-width: 360px;
     align-items: center;
-    text-align: center;
-    padding-top: 6px;
-  }
-
-  .hero__bee {
-    width: 55px;
-    margin: 0 auto 6px auto;
   }
 
   .hero__headline {
     align-items: center;
-    text-align: center;
   }
 
   .hero__headline-line {
-    font-size: clamp(26px, 7.5vw, 42px);
-    text-align: center;
+    font-size: clamp(32px, 8.5vw, 56px);
   }
 
-  .hero__subtext {
-    font-size: 13px;
-    text-align: center;
-    margin-top: 6px;
-    transform: rotate(0deg);
+  .hero__badge {
+    margin-top: 14px;
+    padding: 6px 18px;
+    transform: rotate(-3deg);
   }
 
-  .hero__circular-badge {
-    display: none;
+  .hero__action-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    width: 100%;
   }
 
-  .hero__pot-desktop {
-    display: none;
+  .hero__center.hero__pot-desktop {
+    display: none !important;
   }
 
   .hero__pot-mobile {
-    display: block;
-    width: clamp(60px, 14vw, 85px);
+    display: block !important;
+    position: absolute;
+    left: calc(50% + 92px);
+    top: -22px;
+    transform: none;
+    width: clamp(60px, 16vw, 80px) !important;
     margin-top: 0;
     pointer-events: none;
   }
 
+  .hero__shop-btn {
+    width: 150px;
+    height: 50px;
+    font-size: 22px;
+    margin-top: 0;
+  }
+
   .hero__right {
     width: 100%;
-    max-width: 250px;
-    padding-top: 0;
-    align-items: center;
-    gap: 12px;
   }
 
   .hero__jar-wrap {
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
+    width: 220px;
   }
 
-  .hero__shop-row {
-    justify-content: center;
-    margin-top: -14px;
-    gap: 12px;
-  }
-
-  .hero__shop-btn {
-    align-self: center;
-    margin-right: 0;
-    padding: 9px 24px;
-    font-size: 15px;
+  .hero__circular-badge {
+    display: none;
   }
 
   .hero__flower {
@@ -343,9 +377,8 @@ img { display: block; max-width: 100%; }
 @media (max-width: 480px) {
   .hero {
     padding-top: 65px;
-    gap: 12px;
   }
   .hero__headline-line {
-    font-size: clamp(24px, 7vw, 36px);
+    font-size: clamp(26px, 8vw, 38px);
   }
 }

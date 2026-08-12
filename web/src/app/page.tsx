@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import gsap from 'gsap';
 import Navbar from '@/components/Navbar';
 import SplashLoader from '@/components/SplashLoader';
 import HoneyStorySection from '@/components/HoneyStorySection';
@@ -36,16 +35,6 @@ const fadeIn = {
    ═══════════════════════════════════════════════════════════════════════════ */
 export default function HomePage() {
   const [showSplash, setShowSplash] = useState(true);
-  const jarRef = useRef<HTMLDivElement>(null);
-
-  /* Jar — gentle perpetual float */
-  useEffect(() => {
-    if (!jarRef.current) return;
-    const tween = gsap.to(jarRef.current, {
-      y: -12, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.0,
-    });
-    return () => { tween.kill(); };
-  }, []);
 
   return (
     <div className="page">
@@ -61,156 +50,169 @@ export default function HomePage() {
       <Navbar />
 
       {/* ══════════════════════════════════════════════════════════════════
-          HERO SECTION — Figma design layout
+          HERO SECTION — Exact Figma design layout
           ══════════════════════════════════════════════════════════════════ */}
       <section id="home" className="hero">
 
-        {/* ── Honey drip — full uncropped Image 4 at top ──────────────── */}
+        {/* ── Realistic Bee (Left) ────────────────────────────────────── */}
         <motion.div
-          className="hero__drip"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="hero__bee-left"
+          initial={{ opacity: 0, x: -30, rotate: -15 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
-          <img
-            src="/honey-drip.png"
-            alt=""
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-              objectPosition: 'top center',
-              display: 'block',
-            }}
-            aria-hidden="true"
-          />
-        </motion.div>
-
-        {/* ── LEFT COLUMN — bee + headline ───────────────────────────── */}
-        <div className="hero__left">
-
-          {/* Bee illustration */}
           <motion.div
-            className="hero__bee"
-            initial={{ opacity: 0, x: -30, rotate: -10 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            animate={{ y: [0, -8, 0], rotate: [0, 4, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <Image
               src="/hero-bee.png"
-              alt="Honey bee illustration"
-              width={120}
-              height={90}
+              alt="Realistic Honey Bee"
+              width={140}
+              height={110}
               style={{ width: '100%', height: 'auto' }}
+              priority
             />
           </motion.div>
+        </motion.div>
 
-          {/* Main headline */}
-          <h1 className="hero__headline">
-            {(['NATURAL', 'BEE FARM', 'NATURAL HONEY'] as const).map((line, i) => (
-              <motion.span
-                key={line}
-                className="hero__headline-line"
-                initial="hidden"
-                animate="visible"
-                variants={fadeUp}
-                custom={0.45 + i * 0.14}
-              >
-                {line}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* Subtext */}
-          <motion.p
-            className="hero__subtext"
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={0.85}
-          >
-            100% Pure &amp; Authentic Honey
-          </motion.p>
-
-          {/* Honey pot illustration (Desktop view) */}
+        {/* ── Cartoon Bee (Right Top) ──────────────────────────────────── */}
+        <motion.div
+          className="hero__bee-right"
+          initial={{ opacity: 0, x: 30, rotate: 15 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+        >
           <motion.div
-            className="hero__pot hero__pot-desktop"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.95 }}
+            animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <Image
-              src="/honey-pot.png"
-              alt="Honey pot illustration"
-              width={160}
-              height={180}
-              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 8px 16px rgba(180,100,0,0.18))' }}
+              src="/bee-float.png"
+              alt="Cartoon Bee Illustration"
+              width={170}
+              height={170}
+              style={{ width: '100%', height: 'auto' }}
+              priority
             />
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* ── RIGHT COLUMN — honey jar ───────────────────────────────── */}
-        <div className="hero__right">
-          <motion.div
-            className="hero__jar-wrap"
-            initial={{ opacity: 0, y: 40, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          >
-            <div ref={jarRef} style={{ position: 'relative' }}>
-              <Image
-                src="/honey-jar.png"
-                alt="Natural Bee Farm Raw Honey Jar — Pure · Natural · Unfiltered"
-                width={420}
-                height={560}
-                style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 24px 48px rgba(160,80,0,0.22))' }}
-                priority
-              />
+        {/* ── MAIN HERO LAYOUT CONTAINER ──────────────────────────────── */}
+        <div className="hero__container">
 
-              {/* Circular spinning text badge (Desktop view only, hidden on mobile) */}
-              <div className="hero__circular-badge">
-                <CircularText
-                  text="NATURAL*BEE*FARM*"
-                  spinDuration={20}
-                  onHover="goBonkers"
-                />
-              </div>
-            </div>
-          </motion.div>
+          {/* ── LEFT COLUMN: Headline, Subtitle Badge & CTA ────────── */}
+          <div className="hero__left">
+            <h1 className="hero__headline">
+              {(['NATURAL', 'BEE FARM', 'NATURAL HONEY'] as const).map((line, i) => (
+                <motion.span
+                  key={line}
+                  className="hero__headline-line"
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeUp}
+                  custom={0.3 + i * 0.12}
+                >
+                  {line}
+                </motion.span>
+              ))}
+            </h1>
 
-          {/* Shop now row */}
-          <div className="hero__shop-row">
-            <motion.a
-              href="#collections"
-              className="hero__shop-btn"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Shop now
-            </motion.a>
-
-            {/* Honey pot illustration (Mobile view only, to the right of Shop button) */}
+            {/* Rotated Subtitle Badge */}
             <motion.div
-              className="hero__pot hero__pot-mobile"
-              initial={{ opacity: 0, scale: 0.8, y: 15 }}
+              className="hero__badge"
+              initial={{ opacity: 0, y: 15, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
+            >
+              <span className="hero__badge-text">100% Pure &amp; Authentic Honey</span>
+            </motion.div>
+
+            {/* Action Row for Shop button + Mobile Honey Pot */}
+            <div className="hero__action-row">
+              <motion.a
+                href="#collections"
+                className="hero__shop-btn"
+                initial={{ opacity: 0, scale: 0.85, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.75 }}
+                whileHover={{ scale: 1.08, rotate: 0 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Shop now
+              </motion.a>
+
+              {/* Small Honey Pot (Mobile only) */}
+              <motion.div
+                className="hero__pot hero__pot-mobile"
+                initial={{ opacity: 0, scale: 0.85, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+              >
+                <Image
+                  src="/honey-pot.png"
+                  alt="Honey Pot with Dipper"
+                  width={110}
+                  height={115}
+                  style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 6px 12px rgba(180,100,0,0.18))' }}
+                  priority
+                />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* ── MIDDLE COLUMN: Honey Pot (Desktop view) ──────────────── */}
+          <div className="hero__center hero__pot-desktop">
+            <motion.div
+              className="hero__pot"
+              initial={{ opacity: 0, scale: 0.85, y: 25 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.85 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
             >
               <Image
                 src="/honey-pot.png"
-                alt="Honey pot illustration"
-                width={120}
-                height={130}
-                style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 6px 12px rgba(180,100,0,0.18))' }}
+                alt="Honey Pot with Dipper"
+                width={260}
+                height={270}
+                style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 10px 20px rgba(180,100,0,0.2))' }}
+                priority
               />
             </motion.div>
           </div>
+
+          {/* ── RIGHT COLUMN: Main Raw Honey Jar & Badge ─────────────── */}
+          <div className="hero__right">
+            <motion.div
+              className="hero__jar-wrap"
+              initial={{ opacity: 0, y: 40, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
+            >
+              <div style={{ position: 'relative' }}>
+                <Image
+                  src="/honey-jar.png"
+                  alt="Natural Bee Farm Raw Honey Jar — Pure · Natural · Unfiltered"
+                  width={400}
+                  height={540}
+                  style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 24px 48px rgba(160,80,0,0.22))' }}
+                  priority
+                />
+
+                {/* Circular spinning text badge */}
+                <div className="hero__circular-badge">
+                  <CircularText
+                    text="NATURAL*BEE*FARM*"
+                    spinDuration={20}
+                    onHover="goBonkers"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
 
-        {/* ── RIGHT EDGE — flower decoration ─────────────────────────── */}
+        {/* ── Background Flower line-art (Bottom Right) ────────────────── */}
         <motion.div
           className="hero__flower"
           initial="hidden"
@@ -222,8 +224,8 @@ export default function HomePage() {
           <Image
             src="/hero-flower.png"
             alt=""
-            width={180}
-            height={340}
+            width={200}
+            height={360}
             style={{ width: '100%', height: 'auto', opacity: 0.75 }}
           />
         </motion.div>
