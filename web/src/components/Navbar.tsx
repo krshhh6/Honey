@@ -79,7 +79,7 @@ export default function Navbar() {
       <div className={styles.container}>
         {/* Left: Brand Logo */}
         <a href="/" className={styles.brand}>
-          <img src="/assets/bee-hero.svg" alt="Natural Bee Farm Logo" className={styles.brandBee} />
+          <img src="/assets/bee-hero.svg" alt="Natural Bee Farm Logo" className={styles.brandBee} width={42} height={42} />
           <span className={styles.brandText}>
             NATURAL <span className={styles.brandHighlight}>BEE FARM</span>
           </span>

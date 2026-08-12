@@ -9,6 +9,8 @@ function WhiteMeadlightLogo() {
     <img
       src="/assets/bee-hero.svg"
       alt="Meadlight Bee Logo"
+      width={150}
+      height={96}
       style={{
         width: '150px',
         height: 'auto',

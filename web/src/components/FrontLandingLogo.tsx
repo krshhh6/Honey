@@ -34,6 +34,8 @@ export default function FrontLandingLogo({
           src="/assets/bee-hero.svg"
           alt="Meadlight Yellow Bee Logo"
           className={styles.beeImage}
+          width={380}
+          height={240}
         />
 
         {/* SVG Overlay with Arched Text Path */}
