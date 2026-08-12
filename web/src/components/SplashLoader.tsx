@@ -12,7 +12,7 @@ interface SplashLoaderProps {
 
 export default function SplashLoader({
   onComplete,
-  durationMs = 3000, // 3 seconds intro duration
+  durationMs = 1800, // 1.8 seconds smooth intro
 }: SplashLoaderProps) {
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
@@ -33,16 +33,18 @@ export default function SplashLoader({
       exit={{
         opacity: 0,
         y: -40,
-        scale: 1.02,
-        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+        scale: 0.98,
+        transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
       }}
+      onClick={() => onCompleteRef.current()}
+      style={{ cursor: 'pointer' }}
     >
       {/* Background Honey Glow */}
       <motion.div
         className={styles.honeyGlow}
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.4 }}
+        transition={{ duration: 1.0, delay: 0.2 }}
       />
 
       {/* Main Vector Bee Front Landing Logo - flies up from bottom to center */}

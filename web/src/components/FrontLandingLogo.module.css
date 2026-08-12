@@ -8,10 +8,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100%;
-  max-width: 680px;
+  width: 90vw;
+  max-width: 540px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 16px;
   text-align: center;
   user-select: none;
 }
@@ -19,31 +19,33 @@
 .logoWrapper {
   position: relative;
   width: 100%;
-  max-width: 580px;
-  aspect-ratio: 16 / 10;
+  max-width: 480px;
+  height: clamp(200px, 32vh, 300px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Yellow Bee Vector Graphic - Perfectly matched to wrapper box */
+/* Yellow Bee Vector Graphic - Perfectly contained within wrapper box */
 .beeImage {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  max-width: 400px;
+  max-height: 250px;
   object-fit: contain;
   pointer-events: none;
   z-index: 1;
-  filter: drop-shadow(0 10px 24px rgba(249, 178, 51, 0.3));
+  filter: drop-shadow(0 8px 20px rgba(249, 178, 51, 0.3));
 }
 
-/* SVG Text Overlay for Curved MEADLIGHT & Cursive Subtitle */
+/* SVG Text Overlay for Curved NATURAL BEE FARM & Script Subtitle */
 .textOverlaySvg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
@@ -55,7 +57,7 @@
 .archedTitle {
   font-family: 'Jaro', 'Arial Black', sans-serif;
   font-variation-settings: 'opsz' 6;
-  font-size: 52px;
+  font-size: 50px;
   font-weight: 800;
   fill: #1a1a1a;
   letter-spacing: 0.06em;
@@ -65,7 +67,7 @@
 /* "MOTHER OWNED" Subtitle */
 .scriptSubtitle {
   font-family: 'Irish Grover', 'Dancing Script', cursive;
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 400;
   fill: #1a1a1a;
   letter-spacing: 0.04em;
@@ -73,16 +75,22 @@
 
 /* Bottom Tagline */
 .tagline {
-  margin-top: 20px;
+  margin-top: 16px;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   color: #767676;
   letter-spacing: 0.04em;
   z-index: 2;
 }
 
 @media (max-width: 640px) {
+  .logoContainer {
+    max-width: 360px;
+  }
+  .logoWrapper {
+    height: 220px;
+  }
   .archedTitle {
     font-size: 38px;
   }

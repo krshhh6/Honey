@@ -188,13 +188,26 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
             >
-              <div style={{ position: 'relative' }}>
+              {/* Continuous Organic Floating Motion */}
+              <motion.div
+                animate={{ y: [0, -14, 0], rotate: [0, 1.5, -1, 0] }}
+                transition={{
+                  duration: 4.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{ position: 'relative' }}
+              >
                 <Image
                   src="/honey-jar.png"
                   alt="Natural Bee Farm Raw Honey Jar — Pure · Natural · Unfiltered"
                   width={400}
                   height={540}
-                  style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 24px 48px rgba(160,80,0,0.22))' }}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    filter: 'drop-shadow(0 28px 44px rgba(160, 70, 0, 0.32)) drop-shadow(0 10px 20px rgba(255, 180, 0, 0.22))',
+                  }}
                   priority
                 />
 
@@ -206,7 +219,21 @@ export default function HomePage() {
                     onHover="goBonkers"
                   />
                 </div>
-              </div>
+              </motion.div>
+
+              {/* Dynamic Ground Shadow underneath the floating jar */}
+              <motion.div
+                className="hero__jar-ground-shadow"
+                animate={{
+                  scale: [1, 0.82, 1],
+                  opacity: [0.75, 0.35, 0.75],
+                }}
+                transition={{
+                  duration: 4.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
             </motion.div>
           </div>
 

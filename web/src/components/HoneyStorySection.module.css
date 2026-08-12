@@ -419,3 +419,181 @@
     transform: translateY(-4px);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLL STACK CARD STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.stackCardContent {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+  align-items: center;
+  width: 100%;
+}
+
+.stackCardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stackCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stackCircleBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffcc26 0%, #f59e0b 100%);
+  color: #451a03;
+  font-family: 'Jaro', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  flex-shrink: 0;
+}
+
+.stackBadgePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: rgba(254, 243, 199, 0.8);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 999px;
+  color: #b45309;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stackMainHeading {
+  font-family: 'Jaro', sans-serif;
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 400;
+  color: #78350f;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.stackQuoteText {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-style: italic;
+  color: #92400e;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.stackDetailCard {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-left: 4px solid #f59e0b;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.stackDetailIcon {
+  color: #d97706;
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.stackDetailText {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #292524;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.stackTagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 8px;
+  color: #78350f;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+
+.stackCardRight {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 28vw, 360px);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -8px rgba(180, 83, 9, 0.2);
+  border: 3px solid rgba(254, 243, 199, 0.95);
+  background: #1c1917;
+}
+
+.stackCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.stackCardRight:hover .stackCardImage {
+  transform: scale(1.05);
+}
+
+.stackImageBadge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(28, 25, 23, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 204, 38, 0.4);
+  border-radius: 999px;
+  color: #fff8ea;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.stackImageBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffcc26;
+  box-shadow: 0 0 6px #ffcc26;
+}
+
+@media (max-width: 900px) {
+  .stackCardContent {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .stackCardRight {
+    height: 240px;
+  }
+}
+
